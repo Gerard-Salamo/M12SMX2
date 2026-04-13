@@ -941,26 +941,27 @@
       // ===== TOOLS =====
       const toolsGrid = document.getElementById("toolsGrid");
 
-      if (toolsGrid) {
-        toolsGrid.addEventListener("click", (e) => {
-          const card = e.target.closest(".tool-card");
-          if (!card) return;
+     if (toolsGrid) {
+     toolsGrid.addEventListener("click", (e) => {
+     const card = e.target.closest(".tool-card");
+     if (!card) return;
 
-          const tool = card.dataset.tool;
+     const tool = card.dataset.tool;
 
-          if (tool === "player") {
-            document.getElementById("playerModal").classList.add("open");
-            return;
-          }
+    // abrir modal si es player
+    if (tool === "player") {
+      document.getElementById("playerModal").classList.add("open");
+      return;
+    }
 
-          document.querySelectorAll(".tool-panel").forEach(p => {
-       p.classList.remove("active");
-    });
+    // ocultar grid
+    toolsGrid.style.display = "none";
 
-   const panel = document.getElementById("panel-" + tool);
-   if (panel) {
-   panel.classList.add("active");
-   toolsGrid.style.display = "none";
+    // mostrar panel seleccionado
+    const panel = document.getElementById("panel-" + tool);
+    if (panel) panel.classList.add("active");
+  });
+}
     }
         });
       }
