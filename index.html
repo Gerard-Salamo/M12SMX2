@@ -87,7 +87,7 @@
         color: var(--white);
       }
 
-      .naveglat {
+      .naveg-lat {
         display: flex;
         flex-direction: column;
         padding: 20px 16px;
@@ -96,7 +96,7 @@
       }
 
       /* TIPOGRAFÍA (MENÚ LATERAL) */
-      .naveglat a {
+      .naveg-lat a {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -112,19 +112,19 @@
         border-left: 3px solid transparent;
       }
 
-      .naveglat a .naveg-icona {
+      .naveg-lat a .naveg-icona {
         font-size: 15px;
         width: 20px;
         text-align: center;
         flex-shrink: 0;
       }
 
-      .naveglat a:hover {
+      .naveg-lat a:hover {
         color: var(--white);
         background: rgba(255, 255, 255, 0.07);
       }
 
-      .naveglat a.active {
+      .naveg-lat a.active {
         color: var(--white);
         background: rgba(217, 0, 0, 0.18);
         border-left-color: var(--red);
@@ -926,7 +926,7 @@
       });
 
       // ===== NAV ACTIVO =====
-      const navLinks = document.querySelectorAll(".naveglat a");
+      const navLinks = document.querySelectorAll(".naveg-lat a");
 
       const sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -936,7 +936,7 @@
             navLinks.forEach((l) => l.classList.remove("active"));
 
             const match = document.querySelector(
-              `.naveglat a[href="#${entry.target.id}"]`,
+              `.naveg-lat a[href="#${entry.target.id}"]`,
             );
 
             if (match) match.classList.add("active");
