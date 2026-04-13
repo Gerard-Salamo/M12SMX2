@@ -926,7 +926,7 @@
       });
 
       // ===== NAV ACTIVO =====
-      const navLinks = document.querySelectorAll(".sidebar-nav a");
+      const navLinks = document.querySelectorAll(".naveglat a");
 
       const sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -936,7 +936,7 @@
             navLinks.forEach((l) => l.classList.remove("active"));
 
             const match = document.querySelector(
-              `.sidebar-nav a[href="#${entry.target.id}"]`,
+              `.naveglat a[href="#${entry.target.id}"]`,
             );
 
             if (match) match.classList.add("active");
