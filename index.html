@@ -908,14 +908,7 @@
     <script>
       const sidebar = document.getElementById("sidebar");
       const burgerBtn = document.getElementById("burgerBtn");
-
-      // ===== MENU MÓVIL =====
-      if (burgerBtn) {
-        burgerBtn.addEventListener("click", () => {
-          sidebar.classList.toggle("open");
-        });
-      }
-
+      
       // cerrar al hacer click fuera
       document.addEventListener("click", (e) => {
         if (!sidebar || !burgerBtn) return;
