@@ -87,7 +87,7 @@
         color: var(--white);
       }
 
-      .sidebar-nav {
+      .naveglat {
         display: flex;
         flex-direction: column;
         padding: 20px 16px;
@@ -96,7 +96,7 @@
       }
 
       /* TIPOGRAFÍA (MENÚ LATERAL) */
-      .sidebar-nav a {
+      .naveglat a {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -112,21 +112,20 @@
         border-left: 3px solid transparent;
       }
 
-      .sidebar-nav a .nav-icon {
+      .naveglat a .nav-icon {
         font-size: 15px;
         width: 20px;
         text-align: center;
         flex-shrink: 0;
       }
 
-      .sidebar-nav a:hover {
+      .naveglat a:hover {
         color: var(--white);
         background: rgba(255, 255, 255, 0.07);
       }
 
-      .sidebar-nav a.active {
+      .naveglat a.active {
         color: var(--white);
-        background: rgba(217, 0, 0, 0.18);
         border-left-color: var(--red);
         padding-left: 11px;
       }
@@ -696,7 +695,7 @@
         <div class="logo-badge">🎧</div>
         <span class="logo-name">ECOPOD</span>
       </a>
-      <nav class="sidebar-nav" id="sidebarNav">
+      <nav class="naveglat" id="naveglat">
         <a href="#presentacio" class="active">
           <span class="nav-icon">🏠</span> Inici
         </a>
@@ -919,7 +918,7 @@
       });
 
       // ===== NAV ACTIVO =====
-      const navLinks = document.querySelectorAll(".sidebar-nav a");
+      const navLinks = document.querySelectorAll(".naveglat a");
 
       const sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -929,7 +928,7 @@
             navLinks.forEach((l) => l.classList.remove("active"));
 
             const match = document.querySelector(
-              `.sidebar-nav a[href="#${entry.target.id}"]`,
+              `.naveglat a[href="#${entry.target.id}"]`,
             );
 
             if (match) match.classList.add("active");
