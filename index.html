@@ -87,7 +87,7 @@
         color: var(--white);
       }
 
-      .sidebar-nav {
+      .naveglat {
         display: flex;
         flex-direction: column;
         padding: 20px 16px;
@@ -96,7 +96,7 @@
       }
 
       /* TIPOGRAFÍA (MENÚ LATERAL) */
-      .sidebar-nav a {
+      .naveglat a {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -112,21 +112,19 @@
         border-left: 3px solid transparent;
       }
 
-      .sidebar-nav a .nav-icon {
+      .naveglat a .nav-icon {
         font-size: 15px;
         width: 20px;
         text-align: center;
         flex-shrink: 0;
       }
 
-      .sidebar-nav a:hover {
+      .naveglat a:hover {
         color: var(--white);
         background: rgba(255, 255, 255, 0.07);
       }
 
-      .sidebar-nav a.active {
-        color: var(--white);
-        background: rgba(217, 0, 0, 0.18);
+      .naveglat a.active {
         border-left-color: var(--red);
         padding-left: 11px;
       }
@@ -394,7 +392,7 @@
         display: none;
       }
 
-      .tool-panel.active {
+      .tool-panel {
         display: block;
         animation: fade-up 0.2s ease;
       }
@@ -645,11 +643,11 @@
         gap: 14px;
       }
 
-      .peudepag { 
-       display: flex;
-       gap: 16px;
-       font-size: 15.4px;
-       font-weight: 500;
+      .peudepag {
+        display: flex;
+        gap: 16px;
+        font-size: 15.4px;
+        font-weight: 500;
       }
 
       .text-copyright {
@@ -696,11 +694,10 @@
         <div class="logo-badge">🎧</div>
         <span class="logo-name">ECOPOD</span>
       </a>
-      <nav class="sidebar-nav" id="sidebarNav">
-        <a href="#presentacio" class="active">
-          <span class="nav-icon">🏠</span> Inici
-        </a>
+      <nav class="naveglat" id="naveglat">
+        <a href="#presentacio" class="active"> <span class="nav-icon">🏠</span> Inici </a>
         <a href="#podcasts"> <span class="nav-icon">🎙️</span> Pòdcasts </a>
+        <a href="#perfil"> <span class="nav-icon">👤</span> Perfil </a>
         <a href="#eines"> <span class="nav-icon">🔧</span> Eines extra </a>
       </nav>
     </aside>
@@ -873,9 +870,9 @@
       <footer>
         <div class="peudepag">
           <ol>
-        <li><a href="">El nostre projecte</a></li>
-        <li><a href="">Tutorials</a></li>
-        <li><a href=""></a></li>
+            <li><a href="">El nostre projecte</a></li>
+            <li><a href="">Tutorials</a></li>
+            <li><a href="">Contacte</a></li>
           </ol>
         </div>
         <span class="text-copyright"
@@ -907,14 +904,7 @@
     <script>
       const sidebar = document.getElementById("sidebar");
       const burgerBtn = document.getElementById("burgerBtn");
-
-      // ===== MENU MÓVIL =====
-      if (burgerBtn) {
-        burgerBtn.addEventListener("click", () => {
-          sidebar.classList.toggle("open");
-        });
-      }
-
+      
       // cerrar al hacer click fuera
       document.addEventListener("click", (e) => {
         if (!sidebar || !burgerBtn) return;
@@ -925,7 +915,7 @@
       });
 
       // ===== NAV ACTIVO =====
-      const navLinks = document.querySelectorAll(".sidebar-nav a");
+      const navLinks = document.querySelectorAll(".naveglat a");
 
       const sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -935,7 +925,7 @@
             navLinks.forEach((l) => l.classList.remove("active"));
 
             const match = document.querySelector(
-              `.sidebar-nav a[href="#${entry.target.id}"]`,
+              `.naveglat a[href="#${entry.target.id}"]`,
             );
 
             if (match) match.classList.add("active");
