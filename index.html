@@ -87,7 +87,7 @@
         color: var(--white);
       }
 
-      .naveglat {
+      .sidebar-nav {
         display: flex;
         flex-direction: column;
         padding: 20px 16px;
@@ -96,7 +96,7 @@
       }
 
       /* TIPOGRAFÍA (MENÚ LATERAL) */
-      .naveglat a {
+      .sidebar-nav a {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -112,19 +112,21 @@
         border-left: 3px solid transparent;
       }
 
-      .naveglat a .nav-icon {
+      .sidebar-nav a .nav-icon {
         font-size: 15px;
         width: 20px;
         text-align: center;
         flex-shrink: 0;
       }
 
-      .naveglat a:hover {
+      .sidebar-nav a:hover {
         color: var(--white);
         background: rgba(255, 255, 255, 0.07);
       }
 
-      .naveglat a.active {
+      .sidebar-nav a.active {
+        color: var(--white);
+        background: rgba(217, 0, 0, 0.18);
         border-left-color: var(--red);
         padding-left: 11px;
       }
@@ -694,12 +696,11 @@
         <div class="logo-badge">🎧</div>
         <span class="logo-name">ECOPOD</span>
       </a>
-      <nav class="naveglat" id="naveglat">
+      <nav class="sidebar-nav" id="sidebarNav">
         <a href="#presentacio" class="active">
           <span class="nav-icon">🏠</span> Inici
         </a>
         <a href="#podcasts"> <span class="nav-icon">🎙️</span> Pòdcasts </a>
-        <a href="#perfil"> <span class="nav-icon">👤</span> Perfil </a>
         <a href="#eines"> <span class="nav-icon">🔧</span> Eines extra </a>
       </nav>
     </aside>
@@ -871,11 +872,11 @@
 
       <footer>
         <div class="peudepag">
-          <ol>
+          <ul>
             <li><a href="">El nostre projecte</a></li>
-            <li><a href="">Tutorials</a></li>
-            <li><a href="">Contacte</a></li>
-          </ol>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+          </ul>
         </div>
         <span class="text-copyright"
           >© 2025–2026 ECOPOD — Tots els drets reservats</span
@@ -904,146 +905,144 @@
     </div>
 
     <script>
-            const sidebar = document.getElementById("sidebar");
-            const burgerBtn = document.getElementById("burgerBtn");
+      const sidebar = document.getElementById("sidebar");
+      const burgerBtn = document.getElementById("burgerBtn");
 
-            // cerrar al hacer click fuera
-            document.addEventListener("click", (e) => {
-              if (!sidebar || !burgerBtn) return;
+      // ===== MENU MÓVIL =====
+      if (burgerBtn) {
+        burgerBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("open");
+        });
+      }
 
-              if (!sidebar.contains(e.target) && !burgerBtn.contains(e.target)) {
-                sidebar.classList.remove("open");
-              }
-            });
+      // cerrar al hacer click fuera
+      document.addEventListener("click", (e) => {
+        if (!sidebar || !burgerBtn) return;
 
-            // ===== NAV ACTIVO =====
-            const navLinks = document.querySelectorAll(".naveglat a");
+        if (!sidebar.contains(e.target) && !burgerBtn.contains(e.target)) {
+          sidebar.classList.remove("open");
+        }
+      });
 
-            const sectionObserver = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (!entry.isIntersecting) return;
+      // ===== NAV ACTIVO =====
+      const navLinks = document.querySelectorAll(".sidebar-nav a");
 
-                  navLinks.forEach((l) => l.classList.remove("active"));
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
 
-                  const match = document.querySelector(
-                    `.naveglat a[href="#${entry.target.id}"]`,
-                  );
+            navLinks.forEach((l) => l.classList.remove("active"));
 
-                  if (match) match.classList.add("active");
-                });
-              },
-              { threshold: 0.35 },
+            const match = document.querySelector(
+              `.sidebar-nav a[href="#${entry.target.id}"]`,
             );
 
-            document.querySelectorAll("section[id]").forEach((s) => {
-              sectionObserver.observe(s);
-            });
+            if (match) match.classList.add("active");
+          });
+        },
+        { threshold: 0.35 },
+      );
 
-            // ===== TOOLS =====
-            const toolsGrid = document.getElementById("toolsGrid");
+      document.querySelectorAll("section[id]").forEach((s) => {
+        sectionObserver.observe(s);
+      });
 
-           if (toolsGrid) {
-           toolsGrid.addEventListener("click", (e) => {
-           const card = e.target.closest(".tool-card");
-           if (!card) return;
+      // ===== TOOLS =====
+      const toolsGrid = document.getElementById("toolsGrid");
 
-           const tool = card.dataset.tool;
+      if (toolsGrid) {
+        toolsGrid.addEventListener("click", (e) => {
+          const card = e.target.closest(".tool-card");
+          if (!card) return;
 
-          // abrir modal si es player
+          const tool = card.dataset.tool;
+
           if (tool === "player") {
             document.getElementById("playerModal").classList.add("open");
             return;
           }
 
-          // ocultar grid
-          toolsGrid.style.display = "none";
-
-          // mostrar panel seleccionado
           const panel = document.getElementById("panel-" + tool);
           if (panel) panel.classList.add("active");
         });
       }
+
+      // volver atrás
+      document.querySelectorAll("[data-back]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          btn.closest(".tool-panel")?.classList.remove("active");
+        });
+      });
+
+      // ===== QR =====
+      document.getElementById("qrBtn")?.addEventListener("click", () => {
+        const val = document.getElementById("qrInput").value.trim();
+        const out = document.getElementById("qrOutput");
+
+        if (!val) {
+          out.innerHTML = `<span style="color:red;font-size:13px">Escribe algo primero</span>`;
+          return;
+        }
+
+        out.innerHTML = `
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}">
+  `;
+      });
+
+      // ===== CALCULADORA =====
+      const calcScreen = document.getElementById("calcScreen");
+
+      document.querySelector(".calc-grid")?.addEventListener("click", (e) => {
+        const btn = e.target.closest(".calc-key");
+        if (!btn) return;
+
+        const { action, val } = btn.dataset;
+
+        if (action === "digit") calcScreen.value += val;
+        else if (action === "op") calcScreen.value += val;
+        else if (action === "del")
+          calcScreen.value = calcScreen.value.slice(0, -1);
+        else if (action === "clear") calcScreen.value = "";
+        else if (action === "eval") {
+          try {
+            calcScreen.value = Function(
+              '"use strict";return (' + calcScreen.value + ")",
+            )();
+          } catch {
+            calcScreen.value = "Error";
           }
-              });
-            }
+        }
+      });
 
-            // volver atrás
-            document.querySelectorAll("[data-back]").forEach((btn) => {
-              btn.addEventListener("click", () => {
-                btn.closest(".tool-panel")?.classList.remove("active");
-                toolsGrid.style.display = "grid";
-              });
-            });
+      // teclado
+      document.addEventListener("keydown", (e) => {
+        if (
+          !document.getElementById("panel-calc")?.classList.contains("active")
+        )
+          return;
 
-            // ===== QR =====
-            document.getElementById("qrBtn")?.addEventListener("click", () => {
-              const val = document.getElementById("qrInput").value.trim();
-              const out = document.getElementById("qrOutput");
+        if (/^[0-9.]$/.test(e.key)) calcScreen.value += e.key;
+        else if (["+", "-", "*", "/"].includes(e.key))
+          calcScreen.value += e.key;
+        else if (e.key === "Enter")
+          document.querySelector('[data-action="eval"]').click();
+        else if (e.key === "Backspace")
+          calcScreen.value = calcScreen.value.slice(0, -1);
+        else if (e.key === "Escape") calcScreen.value = "";
+      });
 
-              if (!val) {
-                out.innerHTML = `<span style="color:red;font-size:13px">Escribe algo primero</span>`;
-                return;
-              }
+      // ===== MODAL =====
+      const playerModal = document.getElementById("playerModal");
+      document.getElementById("modalClose")?.addEventListener("click", () => {
+        playerModal.classList.remove("open");
+      });
 
-              out.innerHTML = `
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}">
-        `;
-            });
-
-            // ===== CALCULADORA =====
-            const calcScreen = document.getElementById("calcScreen");
-
-            document.querySelector(".calc-grid")?.addEventListener("click", (e) => {
-              const btn = e.target.closest(".calc-key");
-              if (!btn) return;
-
-              const { action, val } = btn.dataset;
-
-              if (action === "digit") calcScreen.value += val;
-              else if (action === "op") calcScreen.value += val;
-              else if (action === "del")
-                calcScreen.value = calcScreen.value.slice(0, -1);
-              else if (action === "clear") calcScreen.value = "";
-              else if (action === "eval") {
-                try {
-                  calcScreen.value = Function(
-                    '"use strict";return (' + calcScreen.value + ")",
-                  )();
-                } catch {
-                  calcScreen.value = "Error";
-                }
-              }
-            });
-
-            // teclado
-            document.addEventListener("keydown", (e) => {
-              if (
-                !document.getElementById("panel-calc")?.classList.contains("active")
-              )
-                return;
-
-              if (/^[0-9.]$/.test(e.key)) calcScreen.value += e.key;
-              else if (["+", "-", "*", "/"].includes(e.key))
-                calcScreen.value += e.key;
-              else if (e.key === "Enter")
-                document.querySelector('[data-action="eval"]').click();
-              else if (e.key === "Backspace")
-                calcScreen.value = calcScreen.value.slice(0, -1);
-              else if (e.key === "Escape") calcScreen.value = "";
-            });
-
-            // ===== MODAL =====
-            const playerModal = document.getElementById("playerModal");
-            document.getElementById("modalClose")?.addEventListener("click", () => {
-              playerModal.classList.remove("open");
-            });
-
-            playerModal?.addEventListener("click", (e) => {
-              if (e.target === playerModal) {
-                playerModal.classList.remove("open");
-              }
-            });
+      playerModal?.addEventListener("click", (e) => {
+        if (e.target === playerModal) {
+          playerModal.classList.remove("open");
+        }
+      });
     </script>
   </body>
 </html>
