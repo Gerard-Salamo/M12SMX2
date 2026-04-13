@@ -964,7 +964,10 @@
           }
 
           const panel = document.getElementById("panel-" + tool);
-          if (panel) panel.classList.add("active");
+          if (panel) {
+          panel.classList.add("active");
+          toolsGrid.style.display = "none"; 
+          }
         });
       }
 
@@ -972,6 +975,7 @@
       document.querySelectorAll("[data-back]").forEach((btn) => {
         btn.addEventListener("click", () => {
           btn.closest(".tool-panel")?.classList.remove("active");
+          toolsGrid.style.display = "grid";
         });
       });
 
