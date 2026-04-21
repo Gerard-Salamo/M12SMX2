@@ -1,0 +1,4 @@
+ChatGPT, Deepsek: Para el apartado 
+Generador de codi QR y Calculadora.
+
+JavaScript: 70% 
