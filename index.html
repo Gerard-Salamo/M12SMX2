@@ -916,7 +916,7 @@
         });
       }
 
-      // cerrar al hacer click fuera
+      // Quan fas clic fora del menú, es tanca automàticament
       document.addEventListener("click", (e) => {
         if (!sidebar || !burgerBtn) return;
 
@@ -925,7 +925,7 @@
         }
       });
 
-      // ===== NAV ACTIVO =====
+      // Nav Activa 
       const navLinks = document.querySelectorAll(".naveg-lat a");
 
       const sectionObserver = new IntersectionObserver(
@@ -949,7 +949,7 @@
         sectionObserver.observe(s);
       });
 
-      // TOOLS
+      // Eines extra
       const toolsGrid = document.getElementById("toolsGrid");
 
       if (toolsGrid) {
