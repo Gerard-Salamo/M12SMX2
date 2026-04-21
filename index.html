@@ -66,7 +66,7 @@
         flex-shrink: 0;
       }
 
-      .logo-badge {
+      .logo-img {
         width: 42px;
         height: 42px;
         background: var(--red);
@@ -693,7 +693,7 @@
   <body>
     <aside class="sidebar" id="sidebar">
       <a href="#presentacio" class="sidebar-logo">
-        <div class="logo-badge">🎧</div>
+        <div class="logo-img">🎧</div>
         <span class="logo-name">ECOPOD</span>
       </a>
       <nav class="naveg-lat">
@@ -706,7 +706,7 @@
 
     <div class="mobile-bar">
       <a href="#" class="mobile-logo">
-        <div class="logo-badge">🎧</div>
+        <div class="logo-img">🎧</div>
         <span class="logo-name">ECOPOD</span>
       </a>
       <button class="burger" id="burgerBtn" aria-label="Obrir menú">
@@ -976,7 +976,7 @@
         });
       });
 
-      // ===== QR =====
+      // QR
       document.getElementById("qrBtn")?.addEventListener("click", () => {
         const val = document.getElementById("qrInput").value.trim();
         const out = document.getElementById("qrOutput");
