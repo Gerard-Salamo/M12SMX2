@@ -949,7 +949,7 @@
         sectionObserver.observe(s);
       });
 
-      // ===== TOOLS =====
+      // TOOLS
       const toolsGrid = document.getElementById("toolsGrid");
 
       if (toolsGrid) {
@@ -969,7 +969,7 @@
         });
       }
 
-      // volver atrás
+      // Volver atrás
       document.querySelectorAll("[data-back]").forEach((btn) => {
         btn.addEventListener("click", () => {
           btn.closest(".tool-panel")?.classList.remove("active");
@@ -991,7 +991,7 @@
   `;
       });
 
-      // ===== CALCULADORA =====
+      // Calculadora 
       const calcScreen = document.getElementById("calcScreen");
 
       document.querySelector(".calc-grid")?.addEventListener("click", (e) => {
@@ -1016,7 +1016,7 @@
         }
       });
 
-      // teclado
+      // Calculadora (teclado)
       document.addEventListener("keydown", (e) => {
         if (
           !document.getElementById("panel-calc")?.classList.contains("active")
@@ -1033,7 +1033,7 @@
         else if (e.key === "Escape") calcScreen.value = "";
       });
 
-      // ===== MODAL =====
+      //  Reproductor
       const playerModal = document.getElementById("playerModal");
       document.getElementById("modalClose")?.addEventListener("click", () => {
         playerModal.classList.remove("open");
