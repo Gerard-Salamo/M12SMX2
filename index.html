@@ -708,6 +708,111 @@
         background: var(--red);
       }
 
+      /* ==== ESTILS DEL PROJECTE (actualitzats) ==== */
+      #projecte {
+        display: none;
+      }
+
+      .projecte-hero {
+        position: relative;
+        height: 460px;
+        overflow: hidden;
+      }
+
+      .projecte-hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .projecte-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.8));
+      }
+
+      .projecte-hero-text {
+        position: absolute;
+        bottom: 40px;
+        left: 56px;
+        color: #fff;
+        z-index: 2;
+      }
+
+      .projecte-hero-text .projecte-eyebrow {
+        color: var(--red);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 12px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .projecte-hero-text h2 {
+        font-family: "Syne", sans-serif;
+        font-size: 64px;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .projecte-hero-text .projecte-subtitle {
+        font-family: "Syne", sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      .projecte-wrap {
+        padding: 56px;
+        max-width: 900px;
+      }
+
+      .cita {
+        font-family: "Syne", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        border-left: 4px solid var(--red);
+        padding-left: 20px;
+        margin-bottom: 40px;
+        line-height: 1.3;
+      }
+
+      .projecte-wrap p {
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
+
+      .projecte-wrap p.lead {
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .meta-final {
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, .1);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .meta-final strong {
+        display: block;
+        font-family: "Syne", sans-serif;
+        color: var(--ink);
+        font-size: 14px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
       ::selection {
         background: var(--red);
         color: var(--white);
@@ -820,10 +925,47 @@
         </div>
       </section>
 
+      <!-- SECCIÓ PROJECTE (actualitzada) -->
+      <section id="projecte">
+        <div class="projecte-hero">
+          <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920" alt="Estudi de gravació">
+          <div class="projecte-hero-text">
+            <span class="projecte-eyebrow">El nostre projecte</span>
+            <h2>ECOPOD</h2>
+            <p class="projecte-subtitle">Una plataforma de pòdcasts pensada per escoltar millor.</p>
+          </div>
+        </div>
+        <div class="projecte-wrap">
+          <blockquote class="cita">"Una plataforma de pòdcasts pensada per escoltar millor."</blockquote>
+          <p class="lead">ECOPOD és un projecte iniciat el 29 de setembre amb l'objectiu de desenvolupar una plataforma de pòdcasts útil, atractiva i fàcil d'utilitzar.</p>
+          <p>La proposta neix de la voluntat de crear una experiència d'usuari més clara i més agradable, evitant interfícies carregades i posant el contingut al centre.</p>
+          <p>A més de la navegació principal, el projecte inclou eines complementàries com un generador de codis QR, una calculadora i un reproductor de música personal, que aporten interacció i valor afegit a la web.</p>
+          <p>Per desenvolupar-lo, ens hem inspirat en plataformes de referència com YouTube Music, Apple Podcasts i Podverse, analitzant-ne els punts forts i les possibles millores per adaptar-ne les idees al nostre projecte.</p>
+          <div class="meta-final">
+            <div><strong>Objectiu</strong>Plataforma de pòdcasts clara i útil</div>
+            <div><strong>Inspiració</strong>YouTube Music, Apple Podcasts i Podverse</div>
+            <div><strong>Eines</strong>QR, calculadora i reproductor</div>
+          </div>
+        </div>
+      </section>
+
       <footer>
-        <div class="peudepag"><ul><li><a href="#">El nostre projecte</a></li><li><a href="#">Contacte</a></li><li><a href="#">Tutorials</a></li><li><a href="#">Recursos</a></li><li><a href="#">Mapa web</a></li></ul></div>
+        <div class="peudepag">
+          <ul>
+            <li><a href="#projecte" id="link-projecte">El nostre projecte</a></li>
+            <li><a href="#">Contacte</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Recursos</a></li>
+            <li><a href="#">Mapa web</a></li>
+          </ul>
+        </div>
         <span class="text-copyright">© 2025–2026 ECOPOD — Tots els drets reservats</span>
-        <div class="social-links"><a href="#" class="social-link" title="Facebook">f</a><a href="#" class="social-link" title="X">𝕏</a><a href="#" class="social-link" title="Instagram">ig</a><a href="#" class="social-link" title="Spotify">♫</a></div>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Facebook">f</a>
+          <a href="#" class="social-link" title="X">𝕏</a>
+          <a href="#" class="social-link" title="Instagram">ig</a>
+          <a href="#" class="social-link" title="Spotify">♫</a>
+        </div>
       </footer>
     </main>
 
@@ -833,11 +975,16 @@
         <div class="modal-disc">🎵</div>
         <p class="modal-title">Reproductor de música</p>
         <p class="modal-subtitle">Funcionalitat en desenvolupament</p>
-        <div class="player-controls"><button class="ctrl-btn">⏮</button><button class="ctrl-btn">▶</button><button class="ctrl-btn">⏭</button></div>
+        <div class="player-controls">
+          <button class="ctrl-btn">⏮</button>
+          <button class="ctrl-btn">▶</button>
+          <button class="ctrl-btn">⏭</button>
+        </div>
       </div>
     </div>
 
     <script>
+      // Navegació activa amb IntersectionObserver
       const navLinks = document.querySelectorAll(".naveg-lat a");
       const sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -850,8 +997,11 @@
         },
         { threshold: 0.35 }
       );
-      document.querySelectorAll("section[id]").forEach((s) => { sectionObserver.observe(s); });
+      document.querySelectorAll("section[id]").forEach((s) => { 
+        if (s.id !== "projecte") sectionObserver.observe(s); 
+      });
 
+      // Eines extra
       const toolsGrid = document.getElementById("toolsGrid");
       if (toolsGrid) {
         toolsGrid.addEventListener("click", (e) => {
@@ -875,6 +1025,7 @@
         });
       });
 
+      // Generador QR
       document.getElementById("qrBtn")?.addEventListener("click", () => {
         const val = document.getElementById("qrInput").value.trim();
         const out = document.getElementById("qrOutput");
@@ -885,6 +1036,7 @@
         out.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}" alt="Codi QR">`;
       });
 
+      // Calculadora
       const calcScreen = document.getElementById("calcScreen");
       document.querySelector(".calc-grid")?.addEventListener("click", (e) => {
         const btn = e.target.closest(".calc-key");
@@ -909,9 +1061,31 @@
         else if (e.key === "Escape")       calcScreen.value = "";
       });
 
+      // Modal reproductor
       const playerModal = document.getElementById("playerModal");
       document.getElementById("modalClose")?.addEventListener("click", () => { playerModal.classList.remove("open"); });
       playerModal?.addEventListener("click", (e) => { if (e.target === playerModal) playerModal.classList.remove("open"); });
+
+      // Enllaç "El nostre projecte"
+      document.getElementById('link-projecte').addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelectorAll('main > section:not(#projecte)').forEach(s => s.style.display = 'none');
+        document.getElementById('projecte').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Enllaços de la sidebar (tornar a la vista normal)
+      document.querySelectorAll('.naveg-lat a').forEach(a => {
+        a.addEventListener('click', function(e){
+          const id = this.getAttribute('href').slice(1);
+          if (document.getElementById(id) && id !== 'projecte') {
+            e.preventDefault();
+            document.getElementById('projecte').style.display = 'none';
+            document.querySelectorAll('main > section:not(#projecte)').forEach(s => s.style.display = 'block');
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
 
       document.querySelectorAll('.btn-outline').forEach(b => b.addEventListener('click', e => e.preventDefault()));
     </script>
