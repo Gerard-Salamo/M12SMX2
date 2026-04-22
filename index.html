@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="ca">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ECOPOD — Plataforma de Pòdcasts</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*,*::before,*::after{
+*,
+*:before,
+*:after{
 margin:0;
 padding:0;
 box-sizing:border-box;
@@ -28,9 +30,7 @@ box-sizing:border-box;
 --radius:4px;
 }
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
 font-family:"DM Sans",sans-serif;
@@ -40,14 +40,16 @@ display:flex;
 min-height:100vh;
 }
 
+/* SIDEBAR */
+
 .sidebar{
 width:var(--sidebar-w);
 background:var(--ink);
 position:fixed;
 inset:0 auto 0 0;
-z-index:200;
 display:flex;
 flex-direction:column;
+z-index:200;
 }
 
 .sidebar-logo{
@@ -62,15 +64,15 @@ border-bottom:1px solid rgba(255,255,255,.07);
 .logo-img{
 width:42px;
 height:42px;
-background:var(--red);
 border-radius:50%;
 display:grid;
 place-items:center;
+background:var(--red);
 box-shadow:0 0 0 3px rgba(217,0,0,.22);
 }
 
 .logo-name{
-font-family:"Syne",sans-serif;
+font-family:"Syne";
 font-size:22px;
 font-weight:800;
 color:#fff;
@@ -89,25 +91,23 @@ display:flex;
 align-items:center;
 gap:12px;
 padding:11px 14px;
+border-left:3px solid transparent;
 border-radius:var(--radius);
 text-decoration:none;
 color:rgba(255,255,255,.55);
-font-size:14px;
-font-weight:500;
 transition:.2s;
-border-left:3px solid transparent;
 }
 
 .naveg-lat a:hover{
 background:rgba(255,255,255,.07);
-color:white;
+color:#fff;
 }
 
 .naveg-lat a.active{
 background:rgba(217,0,0,.18);
 border-left-color:var(--red);
 padding-left:11px;
-color:white;
+color:#fff;
 }
 
 .naveg-icona{
@@ -115,7 +115,8 @@ width:20px;
 text-align:center;
 }
 
-/* PRINCIPAL */
+/* CONTINGUT */
+
 .contingut-principal{
 margin-left:var(--sidebar-w);
 flex:1;
@@ -133,8 +134,8 @@ overflow:hidden;
 .heroi-textura{
 position:absolute;
 inset:0;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
 pointer-events:none;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
 }
 
 .linia{
@@ -155,16 +156,15 @@ max-width:800px;
 font-size:12px;
 letter-spacing:5px;
 text-transform:uppercase;
-color:var(--red);
 font-weight:700;
+color:var(--red);
 display:block;
 margin-bottom:16px;
 }
 
 .heroi h1{
-font-family:"Syne",sans-serif;
+font-family:"Syne";
 font-size:clamp(48px,8vw,90px);
-font-weight:800;
 line-height:.9;
 letter-spacing:-3px;
 margin-bottom:32px;
@@ -184,9 +184,8 @@ padding:16px 40px;
 background:var(--red);
 color:white;
 text-decoration:none;
-border-radius:var(--radius);
 font-weight:700;
-transition:.18s;
+border-radius:var(--radius);
 }
 
 .boto-principal:hover{
@@ -194,11 +193,11 @@ background:var(--red-dark);
 transform:translateY(-2px);
 }
 
-.pag-secció{
+.pag-seccio{
 padding:64px 56px;
 }
 
-.pag-secció+.pag-secció{
+.pag-seccio + .pag-seccio{
 border-top:1px solid rgba(0,0,0,.07);
 }
 
@@ -206,55 +205,57 @@ border-top:1px solid rgba(0,0,0,.07);
 background:var(--warm);
 }
 
-.section-eyebrow{
+.seccio-etiqueta{
 font-size:12px;
-font-weight:700;
 letter-spacing:4px;
+font-weight:700;
 text-transform:uppercase;
 color:var(--red);
 display:block;
 margin-bottom:12px;
 }
 
-.section-title{
-font-family:"Syne",sans-serif;
+.seccio-titol{
+font-family:"Syne";
 font-size:clamp(32px,5vw,48px);
 font-weight:800;
 margin-bottom:60px;
 }
 
-.podcast-spaced{
+/* PODCASTS */
+
+.podcast-graella{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
 gap:20px;
 }
 
-.podcast-card{
-background:white;
+.podcast-carta{
+background:#fff;
 border:1px solid rgba(0,0,0,.07);
 border-radius:4px;
 overflow:hidden;
 transition:.2s;
 }
 
-.podcast-card:hover{
+.podcast-carta:hover{
 transform:translateY(-3px);
 box-shadow:0 10px 28px rgba(0,0,0,.1);
 }
 
-.podcast-thumb{
+.podcast-icona{
 height:165px;
-background:var(--ink);
 display:grid;
 place-items:center;
+background:var(--ink);
 font-size:48px;
 }
 
-.podcast-body{
+.podcast-cos{
 padding:20px;
 }
 
-.podcast-tag{
+.podcast-etiqueta{
 font-size:11px;
 letter-spacing:2px;
 font-weight:700;
@@ -264,20 +265,20 @@ display:block;
 margin-bottom:12px;
 }
 
-.podcast-title{
+.podcast-titol{
 font-family:"Syne";
 font-size:20px;
 margin-bottom:12px;
 }
 
-.podcast-desc{
+.podcast-descripcio{
 font-size:14px;
 line-height:1.6;
 color:var(--muted);
 margin-bottom:24px;
 }
 
-.btn-outline{
+.boto-contorn{
 display:block;
 text-align:center;
 padding:9px;
@@ -288,20 +289,22 @@ color:var(--ink);
 border-radius:4px;
 }
 
-.btn-outline:hover{
+.boto-contorn:hover{
 background:var(--ink);
 color:white;
 }
 
-.tools-grid{
+/* EINES */
+
+.eines-graella{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
 gap:16px;
 margin-bottom:32px;
 }
 
-.tool-card{
-background:white;
+.eina-carta{
+background:#fff;
 padding:22px 20px;
 border-radius:4px;
 cursor:pointer;
@@ -310,33 +313,22 @@ flex-direction:column;
 gap:9px;
 }
 
-.tool-card:hover{
-border-color:var(--red);
+.eina-carta:hover{
 box-shadow:0 4px 14px rgba(217,0,0,.08);
 }
 
-.tool-badge.ready{
-background:#e5f3e8;
-color:#1c6130;
-}
-
-.tool-badge.wip{
-background:#fff2e0;
-color:#b55e00;
-}
-
-.tool-panel{
+.eina-panell{
 display:none;
 }
 
-.tool-panel.active{
+.eina-panell.active{
 display:block;
 }
 
-.back-btn{
+.boto-enrere{
 padding:7px 18px;
-border-radius:20px;
 margin-bottom:20px;
+border-radius:20px;
 cursor:pointer;
 }
 
@@ -371,17 +363,13 @@ background:rgba(255,255,255,.08);
 color:white;
 }
 
-.calc-key.op{
-background:var(--red);
-}
-
-.calc-key.equal{
-grid-column:span 2;
-}
-
+.calc-key.op{background:var(--red);}
+.calc-key.equal,
 .calc-key.zero{
 grid-column:span 2;
 }
+
+/* MODAL */
 
 .modal-overlay{
 display:none;
@@ -399,9 +387,9 @@ display:flex;
 .modal-box{
 background:white;
 padding:36px;
-border-radius:8px;
 max-width:360px;
 width:90%;
+border-radius:8px;
 text-align:center;
 position:relative;
 }
@@ -410,8 +398,8 @@ position:relative;
 position:absolute;
 top:14px;
 right:16px;
-background:none;
 border:none;
+background:none;
 font-size:22px;
 cursor:pointer;
 }
@@ -428,9 +416,11 @@ background:linear-gradient(135deg,var(--red),var(--ink));
 
 .player-controls{
 display:flex;
-gap:12px;
 justify-content:center;
+gap:12px;
 }
+
+/* FOOTER */
 
 footer{
 background:var(--ink);
@@ -450,9 +440,9 @@ gap:8px;
 .social-link{
 width:32px;
 height:32px;
-border-radius:50%;
 display:grid;
 place-items:center;
+border-radius:50%;
 text-decoration:none;
 color:rgba(255,255,255,.35);
 border:1px solid rgba(255,255,255,.1);
@@ -474,25 +464,10 @@ color:white;
 </a>
 
 <nav class="naveg-lat">
-<a href="#presentacio">
-<span class="naveg-icona">🏠</span>
-Inici
-</a>
-
-<a href="#podcasts">
-<span class="naveg-icona">🎙️</span>
-Pòdcasts
-</a>
-
-<a href="#perfil">
-<span class="naveg-icona">👤</span>
-Perfil
-</a>
-
-<a href="#eines">
-<span class="naveg-icona">🔧</span>
-Eines extra
-</a>
+<a href="#presentacio"><span class="naveg-icona">🏠</span>Inici</a>
+<a href="#podcasts"><span class="naveg-icona">🎙️</span>Pòdcasts</a>
+<a href="#perfil"><span class="naveg-icona">👤</span>Perfil</a>
+<a href="#eines"><span class="naveg-icona">🔧</span>Eines extra</a>
 </nav>
 </aside>
 
@@ -504,107 +479,78 @@ Eines extra
 
 <div class="heroi-interior">
 <span class="heroi-etiqueta">Plataforma de pòdcasts</span>
-
-<h1>
-Les teves orelles<br>
-mereixen més
-</h1>
-
-<p>
-T'ajudem a trobar exactament allò que necessites sentir avui.
-</p>
-
+<h1>Les teves orelles<br>mereixen més</h1>
+<p>T'ajudem a trobar exactament allò que necessites sentir avui.</p>
 <a href="#podcasts" class="boto-principal">
 Explora els pòdcasts
 </a>
 </div>
 </section>
 
-<section class="pag-secció" id="podcasts">
-<span class="secció-eyebrow">Continguts destacats</span>
-<h2 class="section-title">Pòdcasts</h2>
+<section class="pag-seccio" id="podcasts">
+<span class="seccio-etiqueta">Continguts destacats</span>
+<h2 class="seccio-titol">Pòdcasts</h2>
 
-<div class="podcast-spaced">
+<div class="podcast-graella">
 
-<article class="podcast-card">
-<div class="podcast-thumb">📰</div>
-<div class="podcast-body">
-<span class="podcast-tag">Periodisme</span>
-<h3 class="podcast-title">Late Radial</h3>
-<p class="podcast-desc">
-Anàlisi i comentari de l'actualitat diària.
-</p>
-<a href="#" class="btn-outline">Reprodueix ara</a>
+<article class="podcast-carta">
+<div class="podcast-icona">📰</div>
+<div class="podcast-cos">
+<span class="podcast-etiqueta">Periodisme</span>
+<h3 class="podcast-titol">Late Radial</h3>
+<p class="podcast-descripcio">Anàlisi i comentari de l'actualitat diària.</p>
+<a href="#" class="boto-contorn">Reprodueix ara</a>
 </div>
 </article>
 
-<article class="podcast-card">
-<div class="podcast-thumb">💬</div>
-<div class="podcast-body">
-<span class="podcast-tag">Entrevista</span>
-<h3 class="podcast-title">Late Podcast</h3>
-<p class="podcast-desc">
-Converses sinceres amb creadors i artistes.
-</p>
-<a href="#" class="btn-outline">Reprodueix ara</a>
+<article class="podcast-carta">
+<div class="podcast-icona">💬</div>
+<div class="podcast-cos">
+<span class="podcast-etiqueta">Entrevista</span>
+<h3 class="podcast-titol">Late Podcast</h3>
+<p class="podcast-descripcio">Converses sinceres amb creadors i artistes.</p>
+<a href="#" class="boto-contorn">Reprodueix ara</a>
 </div>
 </article>
 
-<article class="podcast-card">
-<div class="podcast-thumb">🎸</div>
-<div class="podcast-body">
-<span class="podcast-tag">Instruments</span>
-<h3 class="podcast-title">Alternativa Guitarra</h3>
-<p class="podcast-desc">
-Tècniques i trucs per millorar.
-</p>
-<a href="#" class="btn-outline">Reprodueix ara</a>
+<article class="podcast-carta">
+<div class="podcast-icona">🎸</div>
+<div class="podcast-cos">
+<span class="podcast-etiqueta">Instruments</span>
+<h3 class="podcast-titol">Alternativa Guitarra</h3>
+<p class="podcast-descripcio">Tècniques i trucs per millorar.</p>
+<a href="#" class="boto-contorn">Reprodueix ara</a>
 </div>
 </article>
 
 </div>
 </section>
 
-<section class="pag-secció" id="eines">
-<span class="section-eyebrow">Funcionalitats</span>
-<h2 class="section-title">Eines extra</h2>
+<section class="pag-seccio" id="eines">
+<span class="seccio-etiqueta">Funcionalitats</span>
+<h2 class="seccio-titol">Eines extra</h2>
 
-<div class="tools-grid" id="toolsGrid">
-<div class="tool-card" data-tool="qr">
-<div class="tool-icon">🔗</div>
-<div class="tool-name">Generador QR</div>
-<span class="tool-badge ready">Actiu</span>
+<div class="eines-graella" id="toolsGrid">
+<div class="eina-carta" data-tool="qr">🔗 Generador QR</div>
+<div class="eina-carta" data-tool="calc">🧮 Calculadora</div>
+<div class="eina-carta" data-tool="player">🎵 Reproductor</div>
 </div>
 
-<div class="tool-card" data-tool="calc">
-<div class="tool-icon">🧮</div>
-<div class="tool-name">Calculadora</div>
-<span class="tool-badge ready">Actiu</span>
-</div>
-
-<div class="tool-card" data-tool="player">
-<div class="tool-icon">🎵</div>
-<div class="tool-name">Reproductor</div>
-<span class="tool-badge wip">En desenvolupament</span>
-</div>
-</div>
-
-<div class="tool-panel" id="panel-qr">
-<button class="back-btn" data-back>← Tornar</button>
+<div class="eina-panell" id="panel-qr">
+<button class="boto-enrere" data-back>← Tornar</button>
 <div class="panel-box">
-<h3>Generador QR</h3>
 <input class="qr-input" id="qrInput">
 <button class="qr-btn" id="qrBtn">Generar</button>
-<div class="qr-output" id="qrOutput">
-<span class="qr-placeholder">El teu codi QR apareixerà aquí</span>
-</div>
+<div id="qrOutput"></div>
 </div>
 </div>
 
-<div class="tool-panel" id="panel-calc">
-<button class="back-btn" data-back>← Tornar</button>
+<div class="eina-panell" id="panel-calc">
+<button class="boto-enrere" data-back>← Tornar</button>
+
 <div class="calculator">
 <input class="calc-screen" id="calcScreen" readonly>
+
 <div class="calc-grid">
 <button class="calc-key clear" data-action="clear">C</button>
 <button class="calc-key op" data-action="op" data-val="/">÷</button>
@@ -613,11 +559,11 @@ Tècniques i trucs per millorar.
 <button class="calc-key" data-action="digit" data-val="7">7</button>
 <button class="calc-key" data-action="digit" data-val="8">8</button>
 <button class="calc-key" data-action="digit" data-val="9">9</button>
-<button class="calc-key op" data-val="-" data-action="op">−</button>
+<button class="calc-key op" data-action="op" data-val="-">−</button>
 <button class="calc-key" data-action="digit" data-val="4">4</button>
 <button class="calc-key" data-action="digit" data-val="5">5</button>
 <button class="calc-key" data-action="digit" data-val="6">6</button>
-<button class="calc-key op" data-val="+" data-action="op">+</button>
+<button class="calc-key op" data-action="op" data-val="+">+</button>
 <button class="calc-key" data-action="digit" data-val="1">1</button>
 <button class="calc-key" data-action="digit" data-val="2">2</button>
 <button class="calc-key" data-action="digit" data-val="3">3</button>
@@ -646,121 +592,113 @@ Tècniques i trucs per millorar.
 <button class="modal-close" id="modalClose">×</button>
 <div class="modal-disc">🎵</div>
 <p>Funcionalitat en desenvolupament</p>
-<div class="player-controls">
-<button>⏮</button>
-<button>▶</button>
-<button>⏭</button>
-</div>
 </div>
 </div>
 
 <script>
-const sidebar=document.getElementById('sidebar');
-const burgerBtn=document.getElementById('burgerBtn');
+const navLinks=document.querySelectorAll(".naveg-lat a");
 
-if(burgerBtn){
-burgerBtn.addEventListener('click',()=>{
-sidebar.classList.toggle('open');
-});
-}
-
-document.addEventListener('click',(e)=>{
-if(!sidebar||!burgerBtn) return;
-if(!sidebar.contains(e.target)&&!burgerBtn.contains(e.target)){
-sidebar.classList.remove('open');
-}
-});
-
-const navLinks=document.querySelectorAll('.naveg-lat a');
-
-const sectionObserver=new IntersectionObserver((entries)=>{
+new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
 if(!entry.isIntersecting) return;
-navLinks.forEach(l=>l.classList.remove('active'));
-const match=document.querySelector(`.naveg-lat a[href="#${entry.target.id}"]`);
-if(match) match.classList.add('active');
+navLinks.forEach(a=>a.classList.remove("active"));
+document
+.querySelector(`.naveg-lat a[href="#${entry.target.id}"]`)
+?.classList.add("active");
 });
-},{threshold:.35});
+},{threshold:.35})
+.observe(document.querySelector("#presentacio"));
 
-document.querySelectorAll('section[id]').forEach(s=>{
-sectionObserver.observe(s);
+document.querySelectorAll("section[id]").forEach(sec=>{
+new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+navLinks.forEach(a=>a.classList.remove("active"));
+document.querySelector(
+`.naveg-lat a[href="#${entry.target.id}"]`
+)?.classList.add("active");
+}
+});
+},{threshold:.35}).observe(sec);
 });
 
-const toolsGrid=document.getElementById('toolsGrid');
-
-if(toolsGrid){
-toolsGrid.addEventListener('click',(e)=>{
-const card=e.target.closest('.tool-card');
-if(!card) return;
+document.getElementById("toolsGrid")
+.addEventListener("click",(e)=>{
+const card=e.target.closest(".eina-carta");
+if(!card)return;
 
 const tool=card.dataset.tool;
 
-if(tool==='player'){
-document.getElementById('playerModal').classList.add('open');
+if(tool==="player"){
+document.getElementById("playerModal")
+.classList.add("open");
 return;
 }
 
-document.getElementById('panel-'+tool)?.classList.add('active');
-});
-}
-
-// Tornar enrere
-
-document.querySelectorAll('[data-back]').forEach(btn=>{
-btn.addEventListener('click',()=>{
-btn.closest('.tool-panel')?.classList.remove('active');
-});
+document
+.getElementById("panel-"+tool)
+?.classList.add("active");
 });
 
-// QR
-
-document.getElementById('qrBtn')?.addEventListener('click',()=>{
-const val=document.getElementById('qrInput').value.trim();
-const out=document.getElementById('qrOutput');
-
-if(!val){
-out.innerHTML=`<span style="color:red;font-size:13px">Escriu alguna cosa primer</span>`;
-return;
-}
-
-out.innerHTML=`
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}">
-`;
+document.querySelectorAll("[data-back]").forEach(btn=>{
+btn.addEventListener("click",()=>{
+btn.closest(".eina-panell")
+.classList.remove("active");
+});
 });
 
-const calcScreen=document.getElementById('calcScreen');
+document.getElementById("qrBtn")
+.addEventListener("click",()=>{
+const val=qrInput.value.trim();
 
-document.querySelector('.calc-grid')?.addEventListener('click',(e)=>{
-const btn=e.target.closest('.calc-key');
-if(!btn) return;
+if(!val)return;
 
-const {action,val}=btn.dataset;
+qrOutput.innerHTML=
+`<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}">`;
+});
 
-if(action==='digit') calcScreen.value+=val;
-else if(action==='op') calcScreen.value+=val;
-else if(action==='del') calcScreen.value=calcScreen.value.slice(0,-1);
-else if(action==='clear') calcScreen.value='';
-else if(action==='eval'){
+const calcScreen=document.getElementById("calcScreen");
+
+document.querySelector(".calc-grid")
+.addEventListener("click",(e)=>{
+const btn=e.target.closest(".calc-key");
+if(!btn)return;
+
+let {action,val}=btn.dataset;
+
+if(action==="digit"||action==="op")
+calcScreen.value+=val;
+
+if(action==="del")
+calcScreen.value=
+calcScreen.value.slice(0,-1);
+
+if(action==="clear")
+calcScreen.value="";
+
+if(action==="eval"){
 try{
-calcScreen.value=Function(
-'"use strict";return ('+calcScreen.value+')'
+calcScreen.value=
+Function(
+'"use strict";return ('+
+calcScreen.value+
+')'
 )();
 }catch{
-calcScreen.value='Error';
+calcScreen.value="Error";
 }
 }
 });
 
-const playerModal=document.getElementById('playerModal');
-document.getElementById('modalClose')?.addEventListener('click',()=>{
-playerModal.classList.remove('open');
-});
+modalClose.onclick=()=>{
+playerModal.classList.remove("open");
+};
 
-playerModal?.addEventListener('click',(e)=>{
+playerModal.onclick=(e)=>{
 if(e.target===playerModal){
-playerModal.classList.remove('open');
+playerModal.classList.remove("open");
 }
-});
+};
 </script>
 
 </body>
