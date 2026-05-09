@@ -3,7 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Player Design - Easy Tutorials</title>
-    <script src="https://fontawesome.com" crossorigin="anonymous"></script>
+    <!-- Link corregido para que los iconos carguen -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
     <style>
         * {
             margin: 0;
@@ -16,23 +18,29 @@
             width: 100%;
             height: 100vh;
             background: #333;
-            display: flex;
+            display: flex; /* Centra el cuadro rosado */
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .reprod-musi {
             width: 400px;
-            background-color: #ffe0e5; /* El color rosado que buscabas */
+            background-color: #ffe0e5; 
             padding: 25px 35px;
-            text-align: center;
+            /* Eliminamos text-align: center para que no amontone los iconos */
         }
 
         nav {
-            display: flex;
-            justify-content: space-between;
+            display: flex; /* Alinea los iconos en una fila */
+            justify-content: space-between; /* Separa los iconos (uno a cada lado) */
             align-items: center;
+        }
+
+        /* Estilos opcionales para que los iconos se vean como botones */
+        .anterior, .barres {
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
         }
     </style>
 </head>
