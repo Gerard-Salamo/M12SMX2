@@ -9,7 +9,7 @@
     />
     <style>
       body {
-        background: #333;  
+        background: #333;
       }
       * {
         margin: 0;
@@ -28,9 +28,10 @@
       }
 
       .reprod-musi {
-        width: 330px;          
+        width: 330px;
         background-color: #ffe0e5;
-        padding: 30px 25px;    
+        padding: 30px 25px;
+        border-radius: 15px;
       }
 
       nav {
@@ -59,12 +60,29 @@
       }
 
       .imgprova1 {
-        width: 180px;          
+        width: 180px;
         height: 180px;
         object-fit: cover;
         border-radius: 50%;
         border: 8px solid #fff;
         box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
+      }
+
+      /* ✅ Nou bloc de text centrat */
+      .info-canco {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .info-canco h1 {
+        font-size: 22px;
+        color: #333;
+      }
+
+      .info-canco p {
+        font-size: 13px;
+        color: #6c6c6c;
+        margin-top: 5px;
       }
     </style>
   </head>
@@ -79,11 +97,16 @@
             <i class="fa-solid fa-bars"></i>
           </div>
         </nav>
+
         <div class="img-flexible">
           <img src="imatges/paisatgeobert.png" class="imgprova1">
-          <h1>Paisatge d'Obert</h1>
-          <p>Una sonorització única cap a l’infinit.</p>
         </div>
+
+        <div class="info-canco">
+          <h1>Paisatge d'Obert</h1>
+          <p>Una sonorització única cap a l'infinit.</p>
+        </div>
+
       </div>
     </div>
   </body>
