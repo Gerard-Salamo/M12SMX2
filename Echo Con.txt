@@ -2,3 +2,5 @@ ChatGPT, Deepsek: Para el apartado
 Generador de codi QR y Calculadora.
 
 JavaScript: 70% 
+
+ChatGPT, Gemini, Gork...: Ajudas con explicaciones (tutores) y JavaScript.
