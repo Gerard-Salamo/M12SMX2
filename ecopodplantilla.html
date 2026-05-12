@@ -200,6 +200,10 @@
             }, 500);
         }
 
+        barraProgres.onchange = function() {
+            audio.play();
+            audio.currentTime = barraProgres.value;
+        };  
     </script>
   </body>
 </html>
