@@ -198,7 +198,7 @@
         barraProgres.value = audio.currentTime;
         };
 
-        barraProgres.onchange = function() {
+        barraProgres.oninput = function() {
             audio.play();
             audio.currentTime = barraProgres.value;
         };  
