@@ -194,11 +194,9 @@
         }
       }
 
-        if(audio.play()){
-            setInterval(() => {
-                barraProgres.value = audio.currentTime;
-            }, 500);
-        }
+        audio.ontimeupdate = function() {
+        barraProgres.value = audio.currentTime;
+        };
 
         barraProgres.onchange = function() {
             audio.play();
