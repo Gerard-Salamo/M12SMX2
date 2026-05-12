@@ -193,6 +193,13 @@
           ctrlIcona.classList.remove("fa-play");
         }
       }
+
+        if(audio.play()){
+            setInterval(() => {
+                barraProgres.value = audio.currentTime;
+            }, 500);
+        }
+
     </script>
   </body>
 </html>
