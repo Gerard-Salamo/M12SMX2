@@ -3,14 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beta Reproductor de Música</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"/>
     <style>
-      body {
-        background: #333;
-      }
+      body { background: #333; }
       * {
         margin: 0;
         padding: 0;
@@ -31,6 +26,7 @@
         width: 330px;
         background-color: #ffe0e5;
         padding: 30px 25px;
+        border-radius: 15px;
       }
 
       nav {
@@ -83,15 +79,8 @@
         margin-top: 5px;
       }
 
-       .reprod-musi h1{
-        font-size: 20px;
-        font-weight: 400;
-        color: #333;
-        margin-top: 20px;
-      }
-       .reprod-musi p{
-        font-size: 14px;
-        color: #333;|
+      audio {
+        display: none; 
       }
 
       #barra-progres {
@@ -101,44 +90,45 @@
         background: #f53192;
         border-radius: 4px;
         cursor: pointer;
-        margin: 40px 0;
+        margin: 20px 0;
       }
 
-      #barra-progres::-webkit-slider-thumb{
-       -webkit-appearance: none;
-       background: #f53192;
-       width: 30px;
-       height: 30px;
-       border-radius: 50%;
-       border: 8px solid #fff;
-       box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22);
-     }
+      #barra-progres::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: #f53192;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22);
+      }
 
-     .controls{
-       display: flex;
-       justify-content: center;
-       align-items: center;
-     }
+      .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
 
-     .controls div{
-       width: 60px;
-       height: 60px;
-       margin: 20px;
-       background: #fff;
-       display: inline-flex;
-       align-items: center;
-       justify-content: center;
-       border-radius: 50%;
-       color: #f53192;
-       box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
-       cursor: pointer;
-     }
+      .controls div {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        background: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #f53192;
+        box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
+        cursor: pointer;
+      }
 
-     .fa-play {
-       transform: scale(1.5);
-       background: #f53192;
-       color: #fff;
-     }
+      .btn-play {
+        transform: scale(1.3);
+        background: #f53192;
+        color: #fff;
+      }
     </style>
   </head>
   <body>
@@ -160,45 +150,46 @@
         <div class="info-canco">
           <h1>Paisatge Obert</h1>
           <p>Una sonorització única cap a l'infinit.</p>
-          <audio controls id="audio">
-            <source src="audios prova/cinematic-slow-background-305617.mp3" type="audio/mpeg">
-          </audio>
-          <input type="range" value="0" id="barra-progres">
-          <div class="controls">
-              <div><i class="fa-solid fa-backward"></i></div>
-              <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcona"></i></div>
-              <div><i class="fa-solid fa-forward"></i></div>
+        </div>
+
+        <audio id="audio">
+          <source src="audios prova/cinematic-slow-background-305617.mp3" type="audio/mpeg">
+        </audio>
+
+        <input type="range" value="0" id="barra-progres">
+
+        <div class="controls">
+          <div><i class="fa-solid fa-backward"></i></div>
+          <div class="btn-play" onclick="playPause()">
+            <i class="fa-solid fa-play" id="ctrlIcona"></i>
           </div>
+          <div><i class="fa-solid fa-forward"></i></div>
         </div>
 
       </div>
     </div>
 
-    <script
-  
-     let barraProgres = document.getElementById("barra-progres");
-     let audio = document.getElementById("audio");
-     let ctrlIcona = document.getElementById("progress"); 
+    <script>
+      let barraProgres = document.getElementById("barra-progres");
+      let audio = document.getElementById("audio");
+      let ctrlIcona = document.getElementById("ctrlIcona"); 
 
-     song.onloadedmetadata = function() {
-       barraProgres.max = song.duration;
-       barraProgres.value = song.currentTime;
-     };
+      audio.onloadedmetadata = function() {
+        barraProgres.max = audio.duration;
+        barraProgres.value = audio.currentTime;
+      };
 
-     funtion playPause(){
-      if(ctrlIcona.classList.contains("fa-pause")){
-        audio.pause();
-        ctrlIcona.classList.remove("fa-pause");
-        ctrlIcona.classList.add("fa-play");
+      function playPause() {
+        if (ctrlIcona.classList.contains("fa-pause")) {
+          audio.pause();
+          ctrlIcona.classList.remove("fa-pause");
+          ctrlIcona.classList.add("fa-play");
+        } else {
+          audio.play();
+          ctrlIcona.classList.add("fa-pause");
+          ctrlIcona.classList.remove("fa-play");
+        }
       }
-      else{
-        audio.play();
-       ctrlIcona.classList.add("fa-pause");
-       ctrlIcona.classList.remove("fa-play");
-      }
-     }
-
     </script>
-
   </body>
 </html>
