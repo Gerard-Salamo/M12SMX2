@@ -160,18 +160,45 @@
         <div class="info-canco">
           <h1>Paisatge Obert</h1>
           <p>Una sonorització única cap a l'infinit.</p>
-          <audio controls>
+          <audio controls id="audio">
             <source src="audios prova/cinematic-slow-background-305617.mp3" type="audio/mpeg">
           </audio>
           <input type="range" value="0" id="barra-progres">
           <div class="controls">
               <div><i class="fa-solid fa-backward"></i></div>
-              <div><i class="fa-solid fa-play"></i></div>
+              <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcona"></i></div>
               <div><i class="fa-solid fa-forward"></i></div>
           </div>
         </div>
 
       </div>
     </div>
+
+    <script
+  
+     let barraProgres = document.getElementById("barra-progres");
+     let audio = document.getElementById("audio");
+     let ctrlIcona = document.getElementById("progress"); 
+
+     song.onloadedmetadata = function() {
+       barraProgres.max = song.duration;
+       barraProgres.value = song.currentTime;
+     };
+
+     funtion playPause(){
+      if(ctrlIcona.classList.contains("fa-pause")){
+        audio.pause();
+        ctrlIcona.classList.remove("fa-pause");
+        ctrlIcona.classList.add("fa-play");
+      }
+      else{
+        audio.play();
+       ctrlIcona.classList.add("fa-pause");
+       ctrlIcona.classList.remove("fa-play");
+      }
+     }
+
+    </script>
+
   </body>
 </html>
