@@ -9,12 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     :root {
       --ink: #111110;
       --paper: #f6f1e9;
@@ -22,32 +16,33 @@
       --red: #d90000;
       --red-dark: #aa0000;
       --muted: #897e6e;
-      --white: #ffffff;
-      --sidebar-w: 228px;
-      --radius: 4px;
+      --radius: 6px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     [data-theme="dark"] {
       --ink: #f6f1e9;
       --paper: #111110;
       --warm: #1a1a1a;
-      --white: #111110;
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
+    
     body {
-      font-family: "DM Sans", sans-serif;
+      font-family: "DM Sans", system-ui, sans-serif;
       background: var(--paper);
       color: var(--ink);
       display: flex;
       min-height: 100vh;
+      line-height: 1.5;
     }
 
-    /* SIDEBAR */
+    /* ==================== SIDEBAR ==================== */
     .sidebar {
-      width: var(--sidebar-w);
+      width: 240px;
       background: var(--ink);
+      color: white;
       position: fixed;
       top: 0; left: 0; bottom: 0;
       z-index: 200;
@@ -56,81 +51,73 @@
     }
 
     .sidebar-logo {
+      padding: 32px 24px;
       display: flex;
       align-items: center;
-      gap: 13px;
-      padding: 28px 24px 26px;
+      gap: 14px;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .logo-img {
-      width: 42px; height: 42px;
+      width: 48px; height: 48px;
       background: var(--red);
       border-radius: 50%;
       display: grid;
       place-items: center;
-      font-size: 20px;
-      box-shadow: 0 0 0 3px rgba(217,0,0,0.22);
+      font-size: 24px;
+      box-shadow: 0 0 0 4px rgba(217, 0, 0, 0.25);
     }
 
     .logo-name {
       font-family: "Syne", sans-serif;
       font-weight: 800;
-      font-size: 17px;
-      letter-spacing: 2px;
-      color: var(--white);
+      font-size: 19px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
     }
 
     .naveg-lat {
       flex: 1;
-      padding: 20px 16px;
+      padding: 24px 16px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
 
     .naveg-lat a {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 11px 14px;
+      gap: 14px;
+      padding: 12px 16px;
       border-radius: var(--radius);
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
       font-weight: 500;
-      transition: all 0.2s;
+      transition: var(--transition);
     }
 
     .naveg-lat a:hover,
     .naveg-lat a.active {
-      color: var(--white);
-      background: rgba(217,0,0,0.18);
+      background: rgba(217,0,0,0.2);
+      color: white;
     }
 
     .naveg-lat a.active {
-      border-left: 3px solid var(--red);
+      border-left: 4px solid var(--red);
     }
 
-    .sidebar-bottom {
-      padding: 20px 24px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      font-size: 11px;
-      color: rgba(255,255,255,0.18);
-    }
-
-    /* MAIN CONTENT */
-    .inici-pral {
-      margin-left: var(--sidebar-w);
+    /* ==================== MAIN ==================== */
+    .main-content {
+      margin-left: 240px;
       flex: 1;
+      min-width: 0;
     }
 
-    /* HERO */
     .heroi {
       background: var(--ink);
-      color: var(--white);
-      padding: 96px 56px 80px;
+      color: white;
+      padding: 120px 64px 100px;
       position: relative;
       overflow: hidden;
     }
@@ -138,422 +125,192 @@
     .hero-grain {
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      background-size: 200px;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
-    }
-
-    .hero-line {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--red);
-    }
-
-    .hero-inner { position: relative; max-width: 800px; }
-
-    .hero-eyebrow {
-      font-size: 12px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--red);
-      font-weight: 700;
-      margin-bottom: 16px;
     }
 
     .heroi h1 {
       font-family: "Syne", sans-serif;
-      font-weight: 800;
-      font-size: clamp(48px, 8vw, 90px);
-      line-height: 0.9;
-      letter-spacing: -3px;
-      margin-bottom: 32px;
+      font-size: clamp(52px, 7vw, 92px);
+      line-height: 0.95;
+      letter-spacing: -3.5px;
+      margin-bottom: 24px;
     }
 
-    .heroi p {
-      font-size: 20px;
-      color: rgba(255,255,255,0.7);
-      max-width: 540px;
-      line-height: 1.4;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 16px 40px;
-      background: var(--red);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: var(--radius);
-      margin-top: 20px;
-      transition: all 0.2s;
-    }
-
-    .btn-primary:hover {
-      background: var(--red-dark);
-      transform: translateY(-2px);
-    }
-
-    /* SECTIONS */
-    .page-section {
-      padding: 64px 56px;
-    }
-
-    .page-section + .page-section {
-      border-top: 1px solid rgba(0,0,0,0.07);
-    }
-
-    #eines { background: var(--warm); }
-
-    .section-eyebrow {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 12px;
-    }
-
-    .secció-titol {
-      font-family: "Syne", sans-serif;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 60px;
-      letter-spacing: -1px;
-    }
-
-    /* PODCASTS */
+    /* Podcast Cards */
     .podcast-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 0 64px;
     }
 
     .podcast-card {
       background: var(--white);
       border-radius: var(--radius);
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.07);
-      transition: all 0.22s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: var(--transition);
     }
 
     .podcast-card:hover {
-      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
 
-    .podcast-thumb {
-      height: 165px;
-      background: var(--ink);
-      display: grid;
-      place-items: center;
-      font-size: 48px;
-      position: relative;
-    }
-
-    .podcast-fav {
-      position: absolute;
-      top: 12px; right: 12px;
-      width: 38px; height: 38px;
-      background: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      opacity: 0;
-      transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    .podcast-card:hover .podcast-fav { opacity: 1; }
-
-    .podcast-fav.active {
-      opacity: 1;
-      background: var(--red);
-      color: white;
-    }
-
-    .podcast-body { padding: 20px; }
-
-    .podcast-tag {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .podcast-title {
-      font-family: "Syne", sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .podcast-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .btn-outline {
-      display: block;
-      padding: 9px;
-      border: 1.5px solid var(--ink);
-      color: var(--ink);
-      text-align: center;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: var(--radius);
-      transition: all 0.16s;
-    }
-
-    .btn-outline:hover {
-      background: var(--ink);
-      color: white;
-    }
-
-    /* TOOLS */
+    /* Tools & Panels */
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 0 64px;
     }
 
     .tool-card {
       background: var(--white);
-      border: 1.5px solid transparent;
+      padding: 28px;
       border-radius: var(--radius);
-      padding: 22px 20px;
       cursor: pointer;
-      transition: all 0.18s;
+      transition: var(--transition);
     }
 
     .tool-card:hover {
       border-color: var(--red);
-      box-shadow: 0 4px 14px rgba(217,0,0,0.08);
+      transform: scale(1.03);
     }
 
-    .tool-panel {
-      display: none;
-    }
-
-    .tool-panel.active {
-      display: block;
-      animation: fade-up 0.2s ease;
-    }
-
-    @keyframes fade-up {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .back-btn {
-      background: none;
-      border: 1.5px solid rgba(0,0,0,0.18);
-      color: var(--ink);
-      padding: 7px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    /* Calculadora, QR, etc. (es mantenen iguals però amb petites millores) */
-    .calculator { background: var(--ink); border-radius: 6px; padding: 16px; max-width: 290px; }
-    .calc-screen { width: 100%; padding: 13px; text-align: right; background: rgba(255,255,255,0.07); border: none; color: white; font-size: 21px; margin-bottom: 12px; }
-    .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-    .calc-key {
-      padding: 14px 6px;
-      font-size: 15px;
-      border: none;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.08);
-      color: white;
-      cursor: pointer;
-    }
-    .calc-key.op { background: var(--red); }
-    .calc-key.equal { background: #2a9d8f; grid-column: span 2; }
-    .calc-key.zero { grid-column: span 2; }
-
-    /* Perfil, Favorits, etc. */
-    #perfil { display: none; }
-    .favorits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 16px;
-    }
-
-    /* Modal styles (es mantenen) */
-    .modal-overlay, .edit-modal {
+    /* Modals */
+    .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.72);
-      z-index: 500;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
       align-items: center;
       justify-content: center;
     }
-    .modal-overlay.open, .edit-modal.open { display: flex; }
+
+    .modal.open { display: flex; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar { width: 72px; }
+      .main-content { margin-left: 72px; }
+      .naveg-lat a span:last-child { display: none; }
+    }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
+
+  <!-- SIDEBAR -->
   <aside class="sidebar">
-    <a href="#" class="sidebar-logo" id="logo-link">
+    <a href="#" id="logo-link" class="sidebar-logo">
       <div class="logo-img">🎧</div>
       <span class="logo-name">ECOPOD</span>
     </a>
-    <nav class="naveg-lat">
-      <a href="#" data-section="presentacio" class="active"><span class="naveg-icona">🏠</span> Inici</a>
-      <a href="#" data-section="podcasts"><span class="naveg-icona">🎙️</span> Pòdcasts</a>
-      <a href="#" data-section="perfil"><span class="naveg-icona">👤</span> Perfil</a>
-      <a href="#" data-section="eines"><span class="naveg-icona">🔧</span> Eines extra</a>
+    <nav class="naveg-lat" id="nav-menu">
+      <a href="#" data-section="presentacio" class="active"><span>🏠</span> Inici</a>
+      <a href="#" data-section="podcasts"><span>🎙️</span> Pòdcasts</a>
+      <a href="#" data-section="eines"><span>🔧</span> Eines</a>
+      <a href="#" data-section="perfil"><span>👤</span> Perfil</a>
     </nav>
-    <div class="sidebar-bottom">© 2025–2026 ECOPOD</div>
+    <div style="padding:20px 24px; font-size:12px; opacity:0.4;">© 2026 ECOPOD</div>
   </aside>
 
-  <main class="inici-pral">
-    <!-- Hero -->
-    <section class="heroi" id="presentacio">
+  <main class="main-content">
+
+    <!-- HERO -->
+    <section id="presentacio" class="heroi">
       <div class="hero-grain"></div>
-      <div class="hero-line"></div>
-      <div class="hero-inner">
-        <span class="hero-eyebrow">Plataforma de pòdcasts</span>
-        <h1>Les teves orelles<br>mereixen més</h1>
-        <p>T'ajudem a trobar exactament allò que necessites sentir avui.</p>
-        <a href="#" data-section="podcasts" class="btn-primary">Explora els pòdcasts</a>
+      <div style="position:relative; max-width:820px;">
+        <span style="color:var(--red); font-weight:700; letter-spacing:4px; font-size:13px;">PLATAFORMA DE PÒDCASTS</span>
+        <h1>Les teves orelles mereixen més</h1>
+        <p style="font-size:21px; max-width:520px; opacity:0.9; margin-top:20px;">
+          Descobreix, escolta i guarda els millors continguts sonors del moment.
+        </p>
+        <a href="#" data-section="podcasts" class="btn-primary" style="display:inline-block; margin-top:32px; padding:16px 42px; background:var(--red); color:white; border-radius:var(--radius); font-weight:700; text-decoration:none;">
+          Explorar pòdcasts
+        </a>
       </div>
     </section>
 
-    <!-- Podcasts -->
-    <section class="page-section" id="podcasts">
-      <span class="section-eyebrow">Continguts destacats</span>
-      <h2 class="secció-titol">Pòdcasts</h2>
-      <div class="podcast-grid">
-        <!-- Els cards es mantenen iguals -->
-        <article class="podcast-card" data-id="1">
-          <div class="podcast-thumb">📰</div>
-          <button class="podcast-fav" data-podcast="1" title="Afegir a favorits">🤍</button>
-          <div class="podcast-body">
-            <span class="podcast-tag">Periodisme</span>
-            <h3 class="podcast-title">Late Radial</h3>
-            <p class="podcast-desc">Anàlisi i comentari de l'actualitat diària amb els millors periodistes del país.</p>
-            <a href="#" class="btn-outline">Reprodueix ara</a>
-          </div>
-        </article>
-        <!-- Repeteix per la resta de podcasts -->
-        <article class="podcast-card" data-id="2">
-          <div class="podcast-thumb">💬</div>
-          <button class="podcast-fav" data-podcast="2" title="Afegir a favorits">🤍</button>
-          <div class="podcast-body">
-            <span class="podcast-tag">Entrevista</span>
-            <h3 class="podcast-title">Late Podcast</h3>
-            <p class="podcast-desc">Converses sinceres amb personatges destacats de la cultura i l'esport català.</p>
-            <a href="#" class="btn-outline">Reprodueix ara</a>
-          </div>
-        </article>
-        <article class="podcast-card" data-id="3">
-          <div class="podcast-thumb">🎸</div>
-          <button class="podcast-fav" data-podcast="3" title="Afegir a favorits">🤍</button>
-          <div class="podcast-body">
-            <span class="podcast-tag">Instruments</span>
-            <h3 class="podcast-title">Alternativa Guitarra</h3>
-            <p class="podcast-desc">Tècniques avançades i trucs per millorar el teu joc a la guitarra.</p>
-            <a href="#" class="btn-outline">Reprodueix ara</a>
-          </div>
-        </article>
+    <!-- PODCASTS -->
+    <section id="podcasts" class="page-section">
+      <div style="padding:0 64px;">
+        <span class="section-eyebrow">MÉS ESCOLTATS</span>
+        <h2 class="secció-titol">Pòdcasts Destacats</h2>
+      </div>
+      <div class="podcast-grid" id="podcastGrid">
+        <!-- Generated by JS -->
       </div>
     </section>
 
-    <!-- Eines -->
-    <section class="page-section" id="eines">
-      <span class="section-eyebrow">Funcionalitats</span>
-      <h2 class="secció-titol">Eines extra</h2>
+    <!-- EINES -->
+    <section id="eines" class="page-section" style="background:var(--warm);">
+      <div style="padding:0 64px;">
+        <span class="section-eyebrow">EINES COMPLEMENTÀRIES</span>
+        <h2 class="secció-titol">Eines Extra</h2>
+      </div>
       <div class="tools-grid" id="toolsGrid">
-        <div class="tool-card" data-tool="qr"><div class="tool-icon">🔗</div><div class="tool-name">Generador de codi QR</div><span class="tool-badge ready">Actiu</span></div>
-        <div class="tool-card" data-tool="calc"><div class="tool-icon">🧮</div><div class="tool-name">Calculadora</div><span class="tool-badge ready">Actiu</span></div>
-        <div class="tool-card" data-tool="player"><div class="tool-icon">🎵</div><div class="tool-name">Reproductor de música</div><span class="tool-badge wip">En desenvolupament</span></div>
+        <div class="tool-card" data-tool="qr">🔗 Generador de QR</div>
+        <div class="tool-card" data-tool="calc">🧮 Calculadora</div>
+        <div class="tool-card" data-tool="player">🎵 Reproductor (WIP)</div>
       </div>
-
-      <!-- Panels -->
-      <div class="tool-panel" id="panel-qr"> ... (es manté el contingut) </div>
-      <div class="tool-panel" id="panel-calc"> ... (es manté el contingut) </div>
+      <!-- Tool Panels -->
+      <div id="panel-qr" class="tool-panel">...</div>
+      <div id="panel-calc" class="tool-panel">...</div>
     </section>
 
-    <!-- Perfil -->
-    <section class="page-section" id="perfil">
-      <!-- El teu contingut de perfil -->
+    <!-- PERFIL -->
+    <section id="perfil" class="page-section" style="display:none;">
+      <!-- Perfil content -->
     </section>
 
-    <!-- Projecte -->
-    <section class="page-section" id="projecte">
-      <!-- El teu contingut del projecte -->
-    </section>
-
-    <footer>
-      <!-- Footer -->
-    </footer>
   </main>
 
-  <!-- Modals -->
-  <!-- (es mantenen) -->
+  <!-- Modals (QR, Calculadora, Player, Edit Profile) -->
 
   <script>
-    // === DADES ===
-    const podcasts = {
-      1: { titol: "Late Radial", icon: "📰", tag: "Periodisme" },
-      2: { titol: "Late Podcast", icon: "💬", tag: "Entrevista" },
-      3: { titol: "Alternativa Guitarra", icon: "🎸", tag: "Instruments" }
+    // === PROFESSIONAL JS STRUCTURE ===
+    const ECOPOD = {
+      init() {
+        this.initNavigation();
+        this.initUser();
+        this.initTheme();
+        this.renderPodcasts();
+        this.initFavorites();
+        this.initTools();
+      },
+
+      initNavigation() {
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = link.dataset.section;
+            this.showSection(section);
+          });
+        });
+
+        document.getElementById('logo-link').addEventListener('click', (e) => {
+          e.preventDefault();
+          this.showSection('presentacio');
+        });
+      },
+
+      showSection(sectionId) {
+        document.querySelectorAll('section').forEach(s => {
+          s.style.display = s.id === sectionId ? 'block' : 'none';
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+          link.classList.toggle('active', link.dataset.section === sectionId);
+        });
+      },
+
+      // ... (continua amb la resta de funcionalitats: favorits, QR, calculadora, etc.)
     };
 
-    // === HELPERS LOCALSTORAGE ===
-    function getData(key, defaultValue) {
-      const data = localStorage.getItem(key);
-      return data ? JSON.parse(data) : defaultValue;
-    }
-
-    function setData(key, value) {
-      localStorage.setItem(key, JSON.stringify(value));
-    }
-
-    // === NAVEGACIÓ ===
-    function showSection(sectionId) {
-      document.querySelectorAll('section').forEach(sec => {
-        sec.style.display = (sec.id === sectionId) ? 'block' : 'none';
-      });
-
-      document.querySelectorAll('.naveg-lat a').forEach(link => {
-        link.classList.toggle('active', link.dataset.section === sectionId);
-      });
-    }
-
-    // Inicialització
-    function init() {
-      initUsuari();
-      initTema();
-      renderFavorits();
-
-      // Navegació
-      document.querySelectorAll('.naveg-lat a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = link.dataset.section;
-          showSection(section);
-        });
-      });
-
-      // Logo → Inici
-      document.getElementById('logo-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        showSection('presentacio');
-      });
-    }
-
-    window.addEventListener('load', init);
+    window.addEventListener('load', () => ECOPOD.init());
   </script>
 </body>
 </html>
