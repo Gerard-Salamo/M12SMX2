@@ -31,6 +31,13 @@
         --radius: 4px;
       }
 
+      [data-theme="dark"] {
+        --ink: #f6f1e9;
+        --paper: #111110;
+        --warm: #1a1a1a;
+        --white: #111110;
+      }
+
       html {
         scroll-behavior: smooth;
       }
@@ -41,6 +48,7 @@
         color: var(--ink);
         display: flex;
         min-height: 100vh;
+        transition: background 0.3s, color 0.3s;
       }
 
       /* ---- SIDEBAR ---- */
@@ -54,6 +62,7 @@
         z-index: 200;
         display: flex;
         flex-direction: column;
+        transition: background 0.3s;
       }
 
       .sidebar-logo {
@@ -82,7 +91,7 @@
         font-family: "Syne", sans-serif;
         font-weight: 800;
         font-size: 17px;
-        letter-spacing: 2px;
+        letter-spacing: 2px; 
         color: var(--white);
         text-transform: uppercase;
         line-height: 1;
@@ -105,12 +114,11 @@
         border-radius: var(--radius);
         text-decoration: none;
         color: rgba(255, 255, 255, 0.5);
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
-        transition:
-          color 0.2s,
-          background 0.2s;
+        transition: color 0.2s, background 0.2s;
         border-left: 3px solid transparent;
+        cursor: pointer;
       }
 
       .naveg-lat a .naveg-icona {
@@ -153,6 +161,7 @@
         padding: 96px 56px 80px;
         position: relative;
         overflow: hidden;
+        transition: background 0.3s;
       }
 
       .hero-grain {
@@ -189,11 +198,11 @@
 
       .heroi h1 {
         font-family: "Syne", sans-serif;
-        font-weight: 600;
+        font-weight: 800;
         font-size: clamp(48px, 8vw, 90px);
-        line-height: 1;
-        letter-spacing: -1px;
-        margin-bottom: 24px;
+        line-height: 0.9;
+        letter-spacing: -3px;
+        margin-bottom: 32px;
       }
 
       .heroi p {
@@ -209,14 +218,12 @@
         display: inline-block;
         padding: 16px 40px;
         background: var(--red);
-        color: rgb(255, 255, 255, 0.85);
+        color: var(--white);
         text-decoration: none;
         font-size: 15px;
         font-weight: 700;
         border-radius: var(--radius);
-        transition:
-          background 0.18s,
-          transform 0.15s;
+        transition: background 0.18s, transform 0.15s;
       }
 
       .btn-primary:hover {
@@ -268,14 +275,17 @@
         border-radius: var(--radius);
         overflow: hidden;
         border: 1px solid rgba(0, 0, 0, 0.07);
-        transition:
-          box-shadow 0.22s,
-          transform 0.18s;
+        transition: box-shadow 0.22s, transform 0.18s;
+        position: relative;
       }
 
       .podcast-card:hover {
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
         transform: translateY(-3px);
+      }
+
+      .podcast-card:hover .podcast-fav {
+        opacity: 1;
       }
 
       .podcast-thumb {
@@ -284,6 +294,35 @@
         display: grid;
         place-items: center;
         font-size: 48px;
+        position: relative;
+      }
+
+      .podcast-fav {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        background: var(--white);
+        border: none;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.15s, background 0.15s, color 0.15s;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+
+      .podcast-fav:hover {
+        transform: scale(1.1);
+      }
+
+      .podcast-fav.active {
+        opacity: 1;
+        background: var(--red);
+        color: var(--white);
       }
 
       .podcast-body {
@@ -325,9 +364,8 @@
         font-size: 13px;
         font-weight: 700;
         border-radius: var(--radius);
-        transition:
-          background 0.16s,
-          color 0.16s;
+        transition: background 0.16s, color 0.16s;
+        cursor: pointer;
       }
 
       .btn-outline:hover {
@@ -349,9 +387,7 @@
         border-radius: var(--radius);
         padding: 22px 20px;
         cursor: pointer;
-        transition:
-          border-color 0.18s,
-          box-shadow 0.18s;
+        transition: border-color 0.18s, box-shadow 0.18s;
         display: flex;
         flex-direction: column;
         gap: 9px;
@@ -411,10 +447,7 @@
         border-radius: 20px;
         cursor: pointer;
         margin-bottom: 20px;
-        transition:
-          background 0.16s,
-          color 0.16s,
-          border-color 0.16s;
+        transition: background 0.16s, color 0.16s, border-color 0.16s;
       }
 
       .back-btn:hover {
@@ -523,6 +556,23 @@
       }
 
       .calc-key {
+       
+
+Endevant (Continua)!
+
+Copiar mensaje
+Editar mensaje
+
+
+Pensé por un momento
+OOO! Endevant! 💪🔥 Continuant el codi...
+
+CODI COMPLET ACTUALITZAT (PART 2 - CONTINUA):
+
+html
+
+Copy code
+      .calc-key {
         padding: 14px 6px;
         font-family: "DM Sans", sans-serif;
         font-size: 15px;
@@ -566,6 +616,346 @@
 
       .calc-key.zero {
         grid-column: span 2;
+      }
+
+      /* ---- PERFIL ---- */
+      #perfil {
+        display: none;
+      }
+
+      .perfil-container {
+        padding: 56px;
+        max-width: 800px;
+      }
+
+      .perfil-header {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+
+      .perfil-avatar-wrap {
+        position: relative;
+      }
+
+      .perfil-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--red), var(--ink));
+        display: grid;
+        place-items: center;
+        font-size: 48px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+      }
+
+      .perfil-avatar:hover {
+        transform: scale(1.05);
+      }
+
+      .perfil-avatar-edit {
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        width: 32px;
+        height: 32px;
+        background: var(--white);
+        border: 2px solid var(--paper);
+        border-radius: 50%;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transition: background 0.15s, color 0.15s;
+      }
+
+      .perfil-avatar-edit:hover {
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .perfil-info h2 {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .perfil-info .perfil-email {
+        font-size: 15px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .perfil-info .perfil-date {
+        font-size: 13px;
+        color: var(--muted);
+        opacity: 0.7;
+      }
+
+      .perfil-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .perfil-btn {
+        padding: 10px 20px;
+        border: 1.5px solid var(--ink);
+        background: transparent;
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.16s, color 0.16s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .perfil-btn:hover {
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .perfil-btn.primary {
+        background: var(--red);
+        border-color: var(--red);
+        color: var(--white);
+      }
+
+      .perfil-btn.primary:hover {
+        background: var(--red-dark);
+        border-color: var(--red-dark);
+      }
+
+      .perfil-section-title {
+        font-family: "Syne", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid rgba(0,0,0,0.1);
+      }
+
+      /* Favorits */
+      .favorits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+        margin-bottom: 48px;
+      }
+
+      .favorit-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border: 1px solid rgba(0,0,0,0.08);
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+
+      .favorit-card:hover {
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+      }
+
+      .favorit-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--ink);
+        border-radius: var(--radius);
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .favorit-info h4 {
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .favorit-info span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .favorit-remove {
+        margin-left: auto;
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: opacity 0.15s, color 0.15s;
+      }
+
+      .favorit-remove:hover {
+        opacity: 1;
+        color: var(--red);
+      }
+
+      .no-favorits {
+        text-align: center;
+        padding: 40px;
+        color: var(--muted);
+      }
+
+      /* Theme fosc/clar */
+      .theme-toggle {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+
+      .theme-toggle span {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .theme-switch {
+        width: 52px;
+        height: 28px;
+        background: rgba(0,0,0,0.1);
+        border-radius: 20px;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.2s;
+      }
+
+      .theme-switch::after {
+        content: "☀️";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 24px;
+        height: 24px;
+        background: var(--white);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        transition: transform 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      [data-theme="dark"] .theme-switch::after {
+        content: "🌙";
+        transform: translateX(24px);
+      }
+
+      [data-theme="dark"] .theme-switch {
+        background: rgba(255,255,255,0.15);
+      }
+
+      /*Modal Edit Perfil */
+      .edit-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.72);
+        z-index: 500;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .edit-modal.open {
+        display: flex;
+      }
+
+      .edit-modal-box {
+        background: var(--white);
+        border-radius: 8px;
+        padding: 32px;
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .edit-modal-box h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 24px;
+      }
+
+      .edit-field {
+        margin-bottom: 16px;
+      }
+
+      .edit-field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .edit-field input {
+        width: 100%;
+        padding: 12px;
+        border: 1.5px solid rgba(0,0,0,0.15);
+        border-radius: var(--radius);
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        background: var(--paper);
+        transition: border-color 0.18s;
+      }
+
+      .edit-field input:focus {
+        outline: none;
+        border-color: var(--red);
+      }
+
+      .edit-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .edit-actions button {
+        flex: 1;
+        padding: 12px;
+        border-radius: var(--radius);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.16s;
+      }
+
+      .edit-save {
+        background: var(--red);
+        border: none;
+        color: var(--white);
+      }
+
+      .edit-save:hover {
+        background: var(--red-dark);
+      }
+
+      .edit-cancel {
+        background: transparent;
+        border: 1.5px solid rgba(0,0,0,0.2);
+        color: var(--ink);
+      }
+
+      .edit-cancel:hover {
+        background: var(--ink);
+        color: var(--white);
       }
 
       /* ---- MODAL ---- */
@@ -651,9 +1041,7 @@
         font-size: 14px;
         display: grid;
         place-items: center;
-        transition:
-          background 0.16s,
-          border-color 0.16s;
+        transition: background 0.16s, border-color 0.16s;
       }
 
       .ctrl-btn:hover {
@@ -672,6 +1060,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 14px;
+        transition: background 0.3s;
       }
 
       .peudepag ul {
@@ -699,23 +1088,20 @@
 
       .social-links {
         display: flex;
-        gap: 12px;
+        gap: 8px;
       }
 
       .social-link {
-        width: 40px;
-        height: 40px;
-        border: 1.5px solid rgba(255, 255, 255, 0.13);
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         display: grid;
         place-items: center;
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.4);
-        font-size: 15px;
-        transition:
-          border-color 0.16s,
-          color 0.16s,
-          background 0.16s;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 12px;
+        transition: border-color 0.16s, color 0.16s, background 0.16s;
       }
 
       .social-link:hover {
@@ -725,10 +1111,6 @@
       }
 
       /* ==== ESTILS DEL PROJECTE (actualitzats) ==== */
-      #projecte {
-        display: none;
-      }
-
       .projecte-hero {
         position: relative;
         height: 460px;
@@ -747,11 +1129,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.2),
-          rgba(0, 0, 0, 0.8)
-        );
+        background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.8));
       }
 
       .projecte-hero-text {
@@ -815,7 +1193,7 @@
       .meta-final {
         margin-top: 60px;
         padding-top: 20px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, .1);
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 30px;
@@ -846,10 +1224,10 @@
         <span class="logo-name">ECOPOD</span>
       </a>
       <nav class="naveg-lat">
-        <a href="#presentacio"><span class="naveg-icona">🏠</span> Inici</a>
-        <a href="#podcasts"><span class="naveg-icona">🎙️</span> Pòdcasts</a>
-        <a href="#perfil"><span class="naveg-icona">👤</span> Perfil</a>
-        <a href="#eines"><span class="naveg-icona">🔧</span> Eines extra</a>
+        <a href="#presentacio" data-nav><span class="naveg-icona">🏠</span> Inici</a>
+        <a href="#podcasts" data-nav><span class="naveg-icona">🎙️</span> Pòdcasts</a>
+        <a href="#perfil" data-nav id="nav-perfil-link"><span class="naveg-icona">👤</span> Perfil</a>
+        <a href="#eines" data-nav><span class="naveg-icona">🔧</span> Eines extra</a>
       </nav>
       <div class="sidebar-bottom">© 2025–2026 ECOPOD</div>
     </aside>
@@ -870,39 +1248,33 @@
         <span class="section-eyebrow">Continguts destacats</span>
         <h2 class="secció-titol">Pòdcasts</h2>
         <div class="podcast-grid">
-          <article class="podcast-card">
+          <article class="podcast-card" data-id="1">
             <div class="podcast-thumb">📰</div>
+            <button class="podcast-fav" data-podcast="1" title="Afegir a favorits">🤍</button>
             <div class="podcast-body">
               <span class="podcast-tag">Periodisme</span>
               <h3 class="podcast-title">Late Radial</h3>
-              <p class="podcast-desc">
-                Anàlisi i comentari de l'actualitat diària amb els millors
-                periodistes del país.
-              </p>
+              <p class="podcast-desc">Anàlisi i comentari de l'actualitat diària amb els millors periodistes del país.</p>
               <a href="#" class="btn-outline">Reprodueix ara</a>
             </div>
           </article>
-          <article class="podcast-card">
+          <article class="podcast-card" data-id="2">
             <div class="podcast-thumb">💬</div>
+            <button class="podcast-fav" data-podcast="2" title="Afegir a favorits">🤍</button>
             <div class="podcast-body">
               <span class="podcast-tag">Entrevista</span>
               <h3 class="podcast-title">Late Podcast</h3>
-              <p class="podcast-desc">
-                Converses sinceres amb personatges destacats de la cultura i
-                l'esport català.
-              </p>
+              <p class="podcast-desc">Converses sinceres amb personatges destacats de la cultura i l'esport català.</p>
               <a href="#" class="btn-outline">Reprodueix ara</a>
             </div>
           </article>
-          <article class="podcast-card">
+          <article class="podcast-card" data-id="3">
             <div class="podcast-thumb">🎸</div>
+            <button class="podcast-fav" data-podcast="3" title="Afegir a favorits">🤍</button>
             <div class="podcast-body">
               <span class="podcast-tag">Instruments</span>
               <h3 class="podcast-title">Alternativa Guitarra</h3>
-              <p class="podcast-desc">
-                Tècniques avançades i trucs per millorar el teu joc a la
-                guitarra.
-              </p>
+              <p class="podcast-desc">Tècniques avançades i trucs per millorar el teu joc a la guitarra.</p>
               <a href="#" class="btn-outline">Reprodueix ara</a>
             </div>
           </article>
@@ -913,36 +1285,17 @@
         <span class="section-eyebrow">Funcionalitats</span>
         <h2 class="secció-titol">Eines extra</h2>
         <div class="tools-grid" id="toolsGrid">
-          <div class="tool-card" data-tool="qr">
-            <div class="tool-icon">🔗</div>
-            <div class="tool-name">Generador de codi QR</div>
-            <span class="tool-badge ready">Actiu</span>
-          </div>
-          <div class="tool-card" data-tool="calc">
-            <div class="tool-icon">🧮</div>
-            <div class="tool-name">Calculadora</div>
-            <span class="tool-badge ready">Actiu</span>
-          </div>
-          <div class="tool-card" data-tool="player">
-            <div class="tool-icon">🎵</div>
-            <div class="tool-name">Reproductor de música</div>
-            <span class="tool-badge wip">En desenvolupament</span>
-          </div>
+          <div class="tool-card" data-tool="qr"><div class="tool-icon">🔗</div><div class="tool-name">Generador de codi QR</div><span class="tool-badge ready">Actiu</span></div>
+          <div class="tool-card" data-tool="calc"><div class="tool-icon">🧮</div><div class="tool-name">Calculadora</div><span class="tool-badge ready">Actiu</span></div>
+          <div class="tool-card" data-tool="player"><div class="tool-icon">🎵</div><div class="tool-name">Reproductor de música</div><span class="tool-badge wip">En desenvolupament</span></div>
         </div>
         <div class="tool-panel" id="panel-qr">
           <button class="back-btn" data-back>← Tornar</button>
           <div class="panel-box">
             <h3>Generador de codi QR</h3>
-            <input
-              type="text"
-              class="qr-input"
-              id="qrInput"
-              placeholder="URL o text..."
-            />
+            <input type="text" class="qr-input" id="qrInput" placeholder="URL o text..." />
             <button class="qr-btn" id="qrBtn">Generar</button>
-            <div class="qr-output" id="qrOutput">
-              <span class="qr-placeholder">El teu codi QR apareixerà aquí</span>
-            </div>
+            <div class="qr-output" id="qrOutput"><span class="qr-placeholder">El teu codi QR apareixerà aquí</span></div>
           </div>
         </div>
         <div class="tool-panel" id="panel-calc">
@@ -951,106 +1304,73 @@
             <input type="text" class="calc-screen" id="calcScreen" readonly />
             <div class="calc-grid">
               <button class="calc-key clear" data-action="clear">C</button>
-              <button class="calc-key op" data-action="op" data-val="/">
-                ÷
-              </button>
-              <button class="calc-key op" data-action="op" data-val="*">
-                ×
-              </button>
+              <button class="calc-key op" data-action="op" data-val="/">÷</button>
+              <button class="calc-key op" data-action="op" data-val="*">×</button>
               <button class="calc-key op" data-action="del">⌫</button>
-              <button class="calc-key" data-action="digit" data-val="7">
-                7
-              </button>
-              <button class="calc-key" data-action="digit" data-val="8">
-                8
-              </button>
-              <button class="calc-key" data-action="digit" data-val="9">
-                9
-              </button>
-              <button class="calc-key op" data-action="op" data-val="-">
-                −
-              </button>
-              <button class="calc-key" data-action="digit" data-val="4">
-                4
-              </button>
-              <button class="calc-key" data-action="digit" data-val="5">
-                5
-              </button>
-              <button class="calc-key" data-action="digit" data-val="6">
-                6
-              </button>
-              <button class="calc-key op" data-action="op" data-val="+">
-                +
-              </button>
-              <button class="calc-key" data-action="digit" data-val="1">
-                1
-              </button>
-              <button class="calc-key" data-action="digit" data-val="2">
-                2
-              </button>
-              <button class="calc-key" data-action="digit" data-val="3">
-                3
-              </button>
+              <button class="calc-key" data-action="digit" data-val="7">7</button>
+              <button class="calc-key" data-action="digit" data-val="8">8</button>
+              <button class="calc-key" data-action="digit" data-val="9">9</button>
+              <button class="calc-key op" data-action="op" data-val="-">−</button>
+              <button class="calc-key" data-action="digit" data-val="4">4</button>
+              <button class="calc-key" data-action="digit" data-val="5">5</button>
+              <button class="calc-key" data-action="digit" data-val="6">6</button>
+              <button class="calc-key op" data-action="op" data-val="+">+</button>
+              <button class="calc-key" data-action="digit" data-val="1">1</button>
+              <button class="calc-key" data-action="digit" data-val="2">2</button>
+              <button class="calc-key" data-action="digit" data-val="3">3</button>
               <button class="calc-key equal" data-action="eval">=</button>
-              <button class="calc-key zero" data-action="digit" data-val="0">
-                0
-              </button>
-              <button class="calc-key" data-action="digit" data-val=".">
-                .
+              <button class="calc-key zero" data-action="digit" data-val="0">0</button>
+              <button class="calc-key" data-action="digit" data-val=".">.</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="perfil">
+        <div class="perfil-container">
+          <div class="perfil-header">
+            <div class="perfil-avatar-wrap">
+              <div class="perfil-avatar" id="perfilAvatar">🎧</div>
+              <button class="perfil-avatar-edit" id="editAvatarBtn" title="Canviar avatar">✏️</button>
+            </div>
+            <div class="perfil-info">
+              <h2 id="perfilNom">Usuari</h2>
+              <p class="perfil-email" id="perfilEmail">correu@exemple.cat</p>
+              <p class="perfil-date">Registrat: <span id="perfilData">--</span></p>
+            </div>
+            <div class="perfil-actions">
+              <button class="perfil-btn" id="editPerfilBtn">✏️ Editar perfil</button>
+              <button class="perfil-btn" id="toggleThemeBtn">
+                <span>🌙</span> Tema
               </button>
             </div>
+          </div>
+
+          <h3 class="perfil-section-title">❤️ Els teus favorits</h3>
+          <div class="favorits-grid" id="favoritsGrid">
+            <p class="no-favorits" id="noFavorits">Encara no tens favorits. Afegeix podcasts des de la secció Pòdcasts!</p>
           </div>
         </div>
       </section>
 
       <section id="projecte">
         <div class="projecte-hero">
-          <img
-            src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920"
-            alt="Estudi de gravació"
-          />
+          <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920" alt="Estudi de gravació">
           <div class="projecte-hero-text">
             <span class="projecte-eyebrow">El nostre projecte</span>
             <h2>ECOPOD</h2>
-            <p class="projecte-subtitle">
-              Una plataforma de pòdcasts pensada per escoltar millor.
-            </p>
+            <p class="projecte-subtitle">Una plataforma de pòdcasts pensada per escoltar millor.</p>
           </div>
         </div>
         <div class="projecte-wrap">
-          <blockquote class="cita">
-            "Una plataforma de pòdcasts pensada per escoltar millor."
-          </blockquote>
-          <p class="lead">
-            ECOPOD és un projecte iniciat el 29 de setembre amb l'objectiu de
-            desenvolupar una plataforma de pòdcasts útil, atractiva i fàcil
-            d'utilitzar.
-          </p>
-          <p>
-            La proposta neix de la voluntat de crear una experiència d'usuari
-            més clara i més agradable, evitant interfícies carregades i posant
-            el contingut al centre.
-          </p>
-          <p>
-            A més de la navegació principal, el projecte inclou eines
-            complementàries com un generador de codis QR, una calculadora i un
-            reproductor de música personal, que aporten interacció i valor
-            afegit a la web.
-          </p>
-          <p>
-            Per desenvolupar-lo, ens hem inspirat en plataformes de referència
-            com YouTube Music, Apple Podcasts i Podverse, analitzant-ne els
-            punts forts i les possibles millores per adaptar-ne les idees al
-            nostre projecte.
-          </p>
+          <blockquote class="cita">"Una plataforma de pòdcasts pensada per escoltar millor."</blockquote>
+          <p class="lead">ECOPOD és un projecte iniciat el 29 de setembre amb l'objectiu de desenvolupar una plataforma de pòdcasts útil, atractiva i fàcil d'utilitzar.</p>
+          <p>La proposta neix de la voluntat de crear una experiència d'usuari més clara i més agradable, evitant interfícies carregades i posant el contingut al centre.</p>
+          <p>A més de la navegació principal, el projecte inclou eines complementàries com un generador de codis QR, una calculadora i un reproductor de música personal, que aporten interacció i valor afegit a la web.</p>
+          <p>Per desenvolupar-lo, ens hem inspirat en plataformes de referència com YouTube Music, Apple Podcasts i Podverse, analitzant-ne els punts forts i les possibles millores per adaptar-ne les idees al nostre projecte.</p>
           <div class="meta-final">
-            <div>
-              <strong>Objectiu</strong>Plataforma de pòdcasts clara i útil
-            </div>
-            <div>
-              <strong>Inspiració</strong>YouTube Music, Apple Podcasts i
-              Podverse
-            </div>
+            <div><strong>Objectiu</strong>Plataforma de pòdcasts clara i útil</div>
+            <div><strong>Inspiració</strong>YouTube Music, Apple Podcasts i Podverse</div>
             <div><strong>Eines</strong>QR, calculadora i reproductor</div>
           </div>
         </div>
@@ -1059,18 +1379,14 @@
       <footer>
         <div class="peudepag">
           <ul>
-            <li>
-              <a href="#projecte" id="link-projecte">El nostre projecte</a>
-            </li>
+            <li><a href="#projecte" id="link-projecte">El nostre projecte</a></li>
             <li><a href="#">Contacte</a></li>
             <li><a href="#">Tutorials</a></li>
             <li><a href="#">Recursos</a></li>
             <li><a href="#">Mapa web</a></li>
           </ul>
         </div>
-        <span class="text-copyright"
-          >© 2025–2026 ECOPOD — Tots els drets reservats</span
-        >
+        <span class="text-copyright">© 2025–2026 ECOPOD — Tots els drets reservats</span>
         <div class="social-links">
           <a href="#" class="social-link" title="Facebook">f</a>
           <a href="#" class="social-link" title="X">𝕏</a>
@@ -1094,27 +1410,223 @@
       </div>
     </div>
 
+    <div class="edit-modal" id="editModal">
+      <div class="edit-modal-box">
+        <h3>Editar perfil</h3>
+        <div class="edit-field">
+          <label>Nom d'usuari</label>
+          <input type="text" id="editNom" placeholder="El teu nom...">
+        </div>
+        <div class="edit-field">
+          <label>Correu electrònic</label>
+          <input type="email" id="editEmail" placeholder="El teu correu...">
+        </div>
+        <div class="edit-actions">
+          <button class="edit-cancel" id="editCancel">Cancel·lar</button>
+          <button class="edit-save" id="editSave">Guardar</button>
+        </div>
+      </div>
+    </div>
+
     <script>
-      // Navegació activa amb IntersectionObserver
-      const navLinks = document.querySelectorAll(".naveg-lat a");
-      const sectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            navLinks.forEach((l) => l.classList.remove("active"));
-            const match = document.querySelector(
-              `.naveg-lat a[href="#${entry.target.id}"]`,
-            );
-            if (match) match.classList.add("active");
-          });
-        },
-        { threshold: 0.35 },
-      );
-      document.querySelectorAll("section[id]").forEach((s) => {
-        if (s.id !== "projecte") sectionObserver.observe(s);
+      // === DADES DELS PODCASTS ===
+      const podcasts = {
+        1: { titol: "Late Radial", icon: "📰", tag: "Periodisme" },
+        2: { titol: "Late Podcast", icon: "💬", tag: "Entrevista" },
+        3: { titol: "Alternativa Guitarra", icon: "🎸", tag: "Instruments" }
+      };
+
+      // === LOCALSTORAGE HELPERS ===
+      function getData(clau, valorPerDefecte) {
+        const d = localStorage.getItem(clau);
+        return d ? JSON.parse(d) : valorPerDefecte;
+      }
+
+      function setData(clau, valor) {
+        localStorage.setItem(clau, JSON.stringify(valor));
+      }
+
+      // === INICIALITZAR DADES USUARI ===
+      function initUsuari() {
+        if (!localStorage.getItem('ecopod_registre')) {
+          const ara = new Date();
+          const dataStr = ara.toLocaleDateString('ca-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+          setData('ecopod_registre', dataStr);
+        }
+        const nom = getData('ecopod_nom', 'Usuari');
+        const email = getData('ecopod_email', 'correu@exemple.cat');
+        const registre = getData('ecopod_registre', '--');
+        const avatar = getData('ecopod_avatar', '🎧');
+        
+        document.getElementById('perfilNom').textContent = nom;
+        document.getElementById('perfilEmail').textContent = email;
+        document.getElementById('perfilData').textContent = registre;
+        document.getElementById('perfilAvatar').textContent = avatar;
+      }
+
+      // === TEMA CLAR/FOSC ===
+      function initTema() {
+        const tema = getData('ecopod_tema', 'light');
+        if (tema === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+
+      document.getElementById('toggleThemeBtn').addEventListener('click', () => {
+        const html = document.documentElement;
+        const actual = html.getAttribute('data-theme');
+        if (actual === 'dark') {
+          html.removeAttribute('data-theme');
+          setData('ecopod_tema', 'light');
+        } else {
+          html.setAttribute('data-theme', 'dark');
+          setData('ecopod_tema', 'dark');
+        }
       });
 
-      // Eines extra
+      // === FAVORITS ===
+      function getFavorits() {
+        return getData('ecopod_favorits', []);
+      }
+
+      function saveFavorits(llistat) {
+        setData('ecopod_favorits', llistat);
+      }
+
+      function renderFavorits() {
+        const favorits = getFavorits();
+        const grid = document.getElementById('favoritsGrid');
+        const noMsg = document.getElementById('noFavorits');
+        
+        if (favorits.length === 0) {
+          noMsg.style.display = 'block';
+          return;
+        }
+        
+        noMsg.style.display = 'none';
+        grid.innerHTML = favorits.map(id => {
+          const p = podcasts[id];
+          return `
+            <div class="favorit-card" data-id="${id}">
+              <div class="favorit-icon">${p.icon}</div>
+              <div class="favorit-info">
+                <h4>${p.titol}</h4>
+                <span>${p.tag}</span>
+              </div>
+              <button class="favorit-remove" data-remove="${id}" title="Treure dels favorits">🗑️</button>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // AGAFAR CLICK A FAVORITS
+      document.querySelector('.podcast-grid').addEventListener('click', (e) => {
+        const btn = e.target.closest('.podcast-fav');
+        if (!btn) return;
+        
+        const id = btn.dataset.podcast;
+        let favorits = getFavorits();
+        
+        if (favorits.includes(id)) {
+          favorits = favorits.filter(f => f !== id);
+          btn.textContent = '🤍';
+          btn.classList.remove('active');
+        } else {
+
+
+          favorits.push(id);
+          btn.textContent = '❤️';
+          btn.classList.add('active');
+        }
+        
+        saveFavorits(favorits);
+        renderFavorits();
+      });
+
+      document.getElementById('favoritsGrid').addEventListener('click', (e) => {
+        const btn = e.target.closest('.favorit-remove');
+        if (!btn) return;
+        
+        const id = btn.dataset.remove;
+        let favorits = getFavorits().filter(f => f !== id);
+        saveFavorits(favorits);
+        renderFavorits();
+        
+        // Actualitzar botó podcast
+        const btnFav = document.querySelector(`.podcast-fav[data-podcast="${id}"]`);
+        if (btnFav) {
+          btnFav.textContent = '🤍';
+          btnFav.classList.remove('active');
+        }
+      });
+
+      document.getElementById('editPerfilBtn').addEventListener('click', () => {
+        document.getElementById('editNom').value = getData('ecopod_nom', 'Usuari');
+        document.getElementById('editEmail').value = getData('ecopod_email', 'correu@exemple.cat');
+        document.getElementById('editModal').classList.add('open');
+      });
+
+      document.getElementById('editCancel').addEventListener('click', () => {
+        document.getElementById('editModal').classList.remove('open');
+      });
+
+      document.getElementById('editSave').addEventListener('click', () => {
+        const nom = document.getElementById('editNom').value.trim() || 'Usuari';
+        const email = document.getElementById('editEmail').value.trim() || 'correu@exemple.cat';
+        
+        setData('ecopod_nom', nom);
+        setData('ecopod_email', email);
+        
+        document.getElementById('perfilNom').textContent = nom;
+        document.getElementById('perfilEmail').textContent = email;
+        document.getElementById('editModal').classList.remove('open');
+      });
+
+      // === CANVIAR AVATAR ===
+      const avatars = ['🎧', '🎵', '🎤', '🎸', '🎹', '🔊', '📻', '💿', '🎚️', '🎛️'];
+      let avatarIndex = 0;
+
+      document.getElementById('editAvatarBtn').addEventListener('click', () => {
+        avatarIndex = (avatarIndex + 1) % avatars.length;
+        const nouAvatar = avatars[avatarIndex];
+        setData('ecopod_avatar', nouAvatar);
+        document.getElementById('perfilAvatar').textContent = nouAvatar;
+      });
+
+      document.querySelectorAll('[data-nav]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href').slice(1);
+          if (id === 'perfil') {
+            e.preventDefault();
+            amagarSeccions();
+            document.getElementById('perfil').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      function amagarSeccions() {
+        document.getElementById('presentacio').style.display = 'none';
+        document.getElementById('podcasts').style.display = 'none';
+        document.getElementById('eines').style.display = 'none';
+        document.getElementById('projecte').style.display = 'none';
+      }
+
+      function mostrarTotes() {
+        document.getElementById('presentacio').style.display = 'block';
+        document.getElementById('podcasts').style.display = 'block';
+        document.getElementById('eines').style.display = 'block';
+        document.getElementById('perfil').style.display = 'none';
+        document.getElementById('projecte').style.display = 'none';
+      }
+
+      document.getElementById('link-projecte').addEventListener('click', (e) => {
+        e.preventDefault();
+        amagarSeccions();
+        document.getElementById('projecte').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
       const toolsGrid = document.getElementById("toolsGrid");
       if (toolsGrid) {
         toolsGrid.addEventListener("click", (e) => {
@@ -1138,7 +1650,6 @@
         });
       });
 
-      // Generador QR
       document.getElementById("qrBtn")?.addEventListener("click", () => {
         const val = document.getElementById("qrInput").value.trim();
         const out = document.getElementById("qrOutput");
@@ -1149,82 +1660,40 @@
         out.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}" alt="Codi QR">`;
       });
 
-      // Calculadora
       const calcScreen = document.getElementById("calcScreen");
       document.querySelector(".calc-grid")?.addEventListener("click", (e) => {
         const btn = e.target.closest(".calc-key");
         if (!btn) return;
         const { action, val } = btn.dataset;
         if (action === "digit") calcScreen.value += val;
-        else if (action === "op") calcScreen.value += val;
-        else if (action === "del")
-          calcScreen.value = calcScreen.value.slice(0, -1);
+        else if (action === "op")  calcScreen.value += val;
+        else if (action === "del") calcScreen.value = calcScreen.value.slice(0, -1);
         else if (action === "clear") calcScreen.value = "";
         else if (action === "eval") {
-          try {
-            calcScreen.value = Function(
-              '"use strict";return (' + calcScreen.value + ")",
-            )();
-          } catch {
-            calcScreen.value = "Error";
-          }
+          try { calcScreen.value = Function('"use strict";return (' + calcScreen.value + ")")(); }
+          catch { calcScreen.value = "Error"; }
         }
       });
 
       document.addEventListener("keydown", (e) => {
-        if (
-          !document.getElementById("panel-calc")?.classList.contains("active")
-        )
-          return;
-        if (/^[0-9.]$/.test(e.key)) calcScreen.value += e.key;
-        else if (["+", "-", "*", "/"].includes(e.key))
-          calcScreen.value += e.key;
-        else if (e.key === "Enter")
-          document.querySelector('[data-action="eval"]').click();
-        else if (e.key === "Backspace")
-          calcScreen.value = calcScreen.value.slice(0, -1);
-        else if (e.key === "Escape") calcScreen.value = "";
+        if (!document.getElementById("panel-calc")?.classList.contains("active")) return;
+        if (/^[0-9.]$/.test(e.key))       calcScreen.value += e.key;
+        else if (["+", "-", "*", "/"].includes(e.key)) calcScreen.value += e.key;
+        else if (e.key === "Enter")        document.querySelector('[data-action="eval"]').click();
+        else if (e.key === "Backspace")    calcScreen.value = calcScreen.value.slice(0, -1);
+        else if (e.key === "Escape")       calcScreen.value = "";
       });
 
-      // Modal reproductor
       const playerModal = document.getElementById("playerModal");
-      document.getElementById("modalClose")?.addEventListener("click", () => {
-        playerModal.classList.remove("open");
-      });
-      playerModal?.addEventListener("click", (e) => {
-        if (e.target === playerModal) playerModal.classList.remove("open");
-      });
+      document.getElementById("modalClose")?.addEventListener("click", () => { playerModal.classList.remove("open"); });
+      playerModal?.addEventListener("click", (e) => { if (e.target === playerModal) playerModal.classList.remove("open"); });
 
-      // Enllaç "El nostre projecte"
-      document
-        .getElementById("link-projecte")
-        .addEventListener("click", function (e) {
-          e.preventDefault();
-          document
-            .querySelectorAll("main > section:not(#projecte)")
-            .forEach((s) => (s.style.display = "none"));
-          document.getElementById("projecte").style.display = "block";
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+      document.querySelectorAll('.btn-outline').forEach(b => b.addEventListener('click', e => e.preventDefault()));
 
-      // Enllaços de la sidebar (tornar a la vista normal)
-      document.querySelectorAll(".naveg-lat a").forEach((a) => {
-        a.addEventListener("click", function (e) {
-          const id = this.getAttribute("href").slice(1);
-          if (document.getElementById(id) && id !== "projecte") {
-            e.preventDefault();
-            document.getElementById("projecte").style.display = "none";
-            document
-              .querySelectorAll("main > section:not(#projecte)")
-              .forEach((s) => (s.style.display = "block"));
-            document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-          }
-        });
-      });
-
-      document
-        .querySelectorAll(".btn-outline")
-        .forEach((b) => b.addEventListener("click", (e) => e.preventDefault()));
+      // === INICIALITZAR TOT ===
+      initUsuari();
+      initTema();
+      renderFavorits();
     </script>
   </body>
 </html>
