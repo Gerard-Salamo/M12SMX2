@@ -135,3 +135,15 @@
       document.querySelectorAll(".btn-outline").forEach((b) =>
         b.addEventListener("click", (e) => e.preventDefault())
       );
+      document.getElementById("link-mapaweb").addEventListener("click", function (e) {
+        e.preventDefault();
+
+            document.getElementById("projecte").style.display = "none";
+
+            document.querySelectorAll("main > section:not(#projecte)").forEach((s) => {
+        s.style.display = "block";
+  });
+  document.getElementById("mapaweb").scrollIntoView({
+    behavior: "smooth"
+  });
+});
