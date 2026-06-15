@@ -147,6 +147,22 @@
         padding: 96px 56px 80px;
         position: relative;
         overflow: hidden;
+        background-image: url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1920");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .heroi::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 0;
+      }
+
+      .hero-grain, .hero-line, .hero-inner {
+        position: relative;
+        z-index: 1;
       }
 
       .hero-grain {
