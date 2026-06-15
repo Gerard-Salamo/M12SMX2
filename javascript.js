@@ -1,4 +1,4 @@
-const navLinks = document.querySelectorAll(".naveg-lat a");
+ const navLinks = document.querySelectorAll(".naveg-lat a");
       const sectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -13,7 +13,6 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
       document.querySelectorAll("section[id]").forEach((s) => {
         if (s.id !== "projecte") sectionObserver.observe(s);
       });
-
       const toolsGrid = document.getElementById("toolsGrid");
       if (toolsGrid) {
         toolsGrid.addEventListener("click", (e) => {
@@ -36,23 +35,15 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
           toolsGrid.style.display = "";
         });
       });
-
       document.getElementById("qrBtn")?.addEventListener("click", () => {
         const val = document.getElementById("qrInput").value.trim();
         const out = document.getElementById("qrOutput");
         if (!val) {
-          out.innerHTML = `<span style="color:var(--red);font-size:13px">Escriu un enllaç primer</span>`;
-          return;
-        }
-        try {
-          new URL(val);
-        } catch {
-          out.innerHTML = `<span style="color:var(--red);font-size:13px">Escriu un enllaç vàlid (ex: https://exemple.com)</span>`;
+          out.innerHTML = `<span style="color:var(--red);font-size:13px">Escriu alguna cosa primer</span>`;
           return;
         }
         out.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}" alt="Codi QR">`;
       });
-
       const calcScreen = document.getElementById("calcScreen");
       document.querySelector(".calc-grid")?.addEventListener("click", (e) => {
         const btn = e.target.closest(".calc-key");
@@ -70,7 +61,6 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
           }
         }
       });
-
       document.addEventListener("keydown", (e) => {
         if (!document.getElementById("panel-calc")?.classList.contains("active")) return;
         if (/^[0-9.]$/.test(e.key)) calcScreen.value += e.key;
@@ -79,12 +69,10 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
         else if (e.key === "Backspace") calcScreen.value = calcScreen.value.slice(0, -1);
         else if (e.key === "Escape") calcScreen.value = "";
       });
-
       const playerModal = document.getElementById("playerModal");
       const barraModal = document.getElementById("barraModal");
       const audioModal = document.getElementById("audioModal");
       const iconaModal = document.getElementById("iconaModal");
-
       function tancarModal() {
         playerModal.classList.remove("open");
         audioModal.pause();
@@ -97,7 +85,6 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
       playerModal?.addEventListener("click", (e) => {
         if (e.target === playerModal) tancarModal();
       });
-
       document.getElementById("modalClose")?.addEventListener("click", tancarModal);
 
       document.getElementById("btnTancarModal")?.addEventListener("click", tancarModal);
@@ -106,20 +93,16 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
         tancarModal();
         document.getElementById("perfil").scrollIntoView({ behavior: "smooth" });
       });
-
       audioModal.onloadedmetadata = function () {
         barraModal.max = audioModal.duration;
         barraModal.value = 0;
       };
-
       audioModal.ontimeupdate = function () {
         barraModal.value = audioModal.currentTime;
       };
-
       barraModal.oninput = function () {
         audioModal.currentTime = barraModal.value;
       };
-
       function playPauseModal() {
         if (iconaModal.classList.contains("fa-pause")) {
           audioModal.pause();
@@ -138,7 +121,6 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
         document.getElementById("projecte").style.display = "block";
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
-
       document.querySelectorAll(".naveg-lat a").forEach((a) => {
         a.addEventListener("click", function (e) {
           const id = this.getAttribute("href").slice(1);
@@ -150,7 +132,6 @@ const navLinks = document.querySelectorAll(".naveg-lat a");
           }
         });
       });
-
       document.querySelectorAll(".btn-outline").forEach((b) =>
         b.addEventListener("click", (e) => e.preventDefault())
       );
