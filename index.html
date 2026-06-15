@@ -816,7 +816,7 @@
           <button class="back-btn" data-back>← Tornar</button>
           <div class="panel-box">
             <h3>Generador de codi QR</h3>
-            <input type="text" class="qr-input" id="qrInput" placeholder="URL o text..." />
+            <input type="url" class="qr-input" id="qrInput" placeholder="https://exemple.com" />
             <button class="qr-btn" id="qrBtn">Generar</button>
             <div class="qr-output" id="qrOutput">
               <span class="qr-placeholder">El teu codi QR apareixerà aquí</span>
@@ -1030,7 +1030,13 @@
         const val = document.getElementById("qrInput").value.trim();
         const out = document.getElementById("qrOutput");
         if (!val) {
-          out.innerHTML = `<span style="color:var(--red);font-size:13px">Escriu alguna cosa primer</span>`;
+          out.innerHTML = `<span style="color:var(--red);font-size:13px">Escriu un enllaç primer</span>`;
+          return;
+        }
+        try {
+          new URL(val);
+        } catch {
+          out.innerHTML = `<span style="color:var(--red);font-size:13px">Escriu un enllaç vàlid (ex: https://exemple.com)</span>`;
           return;
         }
         out.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(val)}" alt="Codi QR">`;
