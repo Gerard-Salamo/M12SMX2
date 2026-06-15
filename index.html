@@ -739,7 +739,8 @@
       <nav class="naveg-lat">
         <a href="#presentacio"><span class="naveg-icona">🏠</span> Inici</a>
         <a href="#podcasts"><span class="naveg-icona">🎙️</span> Pòdcasts</a>
-        <a href="#recursos"><span class="naveg-icona">📚</span> Recursos</a> <a href="#eines"><span class="naveg-icona">🔧</span> Eines extra</a>
+        <a href="#perfil"><span class="naveg-icona">👤</span> Perfil</a>
+        <a href="#eines"><span class="naveg-icona">🔧</span> Eines extra</a>
       </nav>
       <div class="sidebar-bottom">© 2025–2026 ECOPOD</div>
     </aside>
@@ -785,40 +786,6 @@
               <h3 class="podcast-title">Alternativa Guitarra</h3>
               <p class="podcast-desc">Tècniques avançades i trucs per millorar el teu joc a la guitarra.</p>
               <a href="#" class="btn-outline">Reprodueix ara</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="page-section" id="recursos">
-        <span class="section-eyebrow">Material d'interès creador</span>
-        <h2 class="secció-titol">Recursos</h2>
-        <div class="podcast-grid">
-          <article class="podcast-card">
-            <div class="podcast-thumb">📘</div>
-            <div class="podcast-body">
-              <span class="podcast-tag">Guies</span>
-              <h3 class="podcast-title">Manual de Gravació</h3>
-              <p class="podcast-desc">Tot el que necessites saber sobre programes d'edició per començar des de zero.</p>
-              <a href="#" class="btn-outline">Descarrega PDF</a>
-            </div>
-          </article>
-          <article class="podcast-card">
-            <div class="podcast-thumb">🎛️</div>
-            <div class="podcast-body">
-              <span class="podcast-tag">Hardware</span>
-              <h3 class="podcast-title">Equip Recomanat</h3>
-              <p class="podcast-desc">Una tria dels millors micròfons, targetes de so i auriculars segons pressupost.</p>
-              <a href="#" class="btn-outline">Veure llista</a>
-            </div>
-          </article>
-          <article class="podcast-card">
-            <div class="podcast-thumb">🎵</div>
-            <div class="podcast-body">
-              <span class="podcast-tag">Àudio</span>
-              <h3 class="podcast-title">Música Lliure</h3>
-              <p class="podcast-desc">Recull de llibreries amb efectes de so i sintonies sense drets d'autor.</p>
-              <a href="#" class="btn-outline">Explora llibreries</a>
             </div>
           </article>
         </div>
@@ -910,7 +877,8 @@
           <ul>
             <li><a href="#projecte" id="link-projecte">El nostre projecte</a></li>
             <li><a href="#">Contacte</a></li>
-            <li><a href="#recursos">Recursos</a></li> <li><a href="#">Mapa web</a></li>
+            <li><a href="#">Recursos</a></li>
+            <li><a href="#">Mapa web</a></li>
           </ul>
         </div>
         <span class="text-copyright">© 2025–2026 ECOPOD — Tots els drets reservats</span>
@@ -1026,10 +994,49 @@
           }
         }
       });
+      document.addEventListener("keydown", (e) => {
+        if (!document.getElementById("panel-calc")?.classList.contains("active")) return;
+        if (/^[0-9.]$/.test(e.key)) calcScreen.value += e.key;
+        else if (["+", "-", "*", "/"].includes(e.key)) calcScreen.value += e.key;
+        else if (e.key === "Enter") document.querySelector('[data-action="eval"]').click();
+        else if (e.key === "Backspace") calcScreen.value = calcScreen.value.slice(0, -1);
+        else if (e.key === "Escape") calcScreen.value = "";
+      });
+      const playerModal = document.getElementById("playerModal");
+      const barraModal = document.getElementById("barraModal");
+      const audioModal = document.getElementById("audioModal");
+      const iconaModal = document.getElementById("iconaModal");
+      function tancarModal() {
+        playerModal.classList.remove("open");
+        audioModal.pause();
+        audioModal.currentTime = 0;
+        barraModal.value = 0;
+        iconaModal.classList.remove("fa-pause");
+        iconaModal.classList.add("fa-play");
+      }
 
+      playerModal?.addEventListener("click", (e) => {
+        if (e.target === playerModal) tancarModal();
+      });
+      document.getElementById("modalClose")?.addEventListener("click", tancarModal);
+
+      document.getElementById("btnTancarModal")?.addEventListener("click", tancarModal);
+
+      document.getElementById("btnPerfil")?.addEventListener("click", () => {
+        tancarModal();
+        document.getElementById("perfil").scrollIntoView({ behavior: "smooth" });
+      });
+      audioModal.onloadedmetadata = function () {
+        barraModal.max = audioModal.duration;
+        barraModal.value = 0;
+      };
+      audioModal.ontimeupdate = function () {
+        barraModal.value = audioModal.currentTime;
+      };
+      barraModal.oninput = function () {
+        audioModal.currentTime = barraModal.value;
+      };
       function playPauseModal() {
-        const audioModal = document.getElementById("audioModal");
-        const iconaModal = document.getElementById("iconaModal");
         if (iconaModal.classList.contains("fa-pause")) {
           audioModal.pause();
           iconaModal.classList.remove("fa-pause");
@@ -1047,8 +1054,7 @@
         document.getElementById("projecte").style.display = "block";
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
-
-      document.querySelectorAll(".naveg-lat a, .peudepag a").forEach((a) => {
+      document.querySelectorAll(".naveg-lat a").forEach((a) => {
         a.addEventListener("click", function (e) {
           const id = this.getAttribute("href").slice(1);
           if (document.getElementById(id) && id !== "projecte") {
@@ -1059,24 +1065,9 @@
           }
         });
       });
-
-      document.getElementById("modalClose")?.addEventListener("click", () => {
-        document.getElementById("playerModal").classList.remove("open");
-        const audioModal = document.getElementById("audioModal");
-        const iconaModal = document.getElementById("iconaModal");
-        audioModal.pause();
-        iconaModal.classList.remove("fa-pause");
-        iconaModal.classList.add("fa-play");
-      });
-
-      document.getElementById("btnTancarModal")?.addEventListener("click", () => {
-        document.getElementById("playerModal").classList.remove("open");
-        const audioModal = document.getElementById("audioModal");
-        const iconaModal = document.getElementById("iconaModal");
-        audioModal.pause();
-        iconaModal.classList.remove("fa-pause");
-        iconaModal.classList.add("fa-play");
-      });
+      document.querySelectorAll(".btn-outline").forEach((b) =>
+        b.addEventListener("click", (e) => e.preventDefault())
+      );
     </script>
   </body>
 </html>
